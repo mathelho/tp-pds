@@ -12,7 +12,7 @@ no minimo enquanto dividirmos as subtasks entre os componentes da equipe.
 
 ## Funções dos membros
 
-- Felipe: Arquiteto/Dev, responsável pelo refinamento e Implementação;
-- Celso: Dev/QA, responsável por implementação, testes e quality;
-- Matheus: Dev/UX, responsável pelo Banco de dados, retorno visual e implementação;
+- Felipe Matheus Guimarães dos Santos: Arquiteto/Dev, responsável pelo refinamento e Implementação;
+- Celso Junio Simões de Oliveira Santos: Dev/QA, responsável por implementação, testes e quality;
+- Matheus Ferreira Coelho: Dev/UX, responsável pelo Banco de dados, retorno visual e implementação;
 - Natan: Dev/Analista, responsável por Implementação, Banco de dados e testes.
