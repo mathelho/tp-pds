@@ -35,6 +35,13 @@ public class MovieService {
         .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Movie not found"));
   }
 
+  public Movie findByName(String name) {
+    return movies.stream()
+        .filter(movie -> movie.getName().equals(name))
+        .findFirst()
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));
+  }
+
   public Movie save(Movie movie) {
     movie.setId(ThreadLocalRandom.current().nextLong(3, 99999));
     movies.add(movie);
@@ -43,5 +50,10 @@ public class MovieService {
 
   public void delete(Long id) {
     movies.remove(findById(id));
+  }
+
+  public void replace(Movie movie) {
+    delete(movie.getId());
+    movies.add(movie);
   }
 }
