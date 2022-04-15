@@ -1,9 +1,17 @@
 package com.ufmg.pds.bancofilmes.domains;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Movie {
   private Long id;
+
+  @JsonProperty("name")
   private String name;
+
+  @JsonProperty("director")
   private String director;
+
+  @JsonProperty("score")
   private Double score;
 
   public Movie() {}
