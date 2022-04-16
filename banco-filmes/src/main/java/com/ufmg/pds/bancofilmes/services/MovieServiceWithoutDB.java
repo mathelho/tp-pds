@@ -1,6 +1,8 @@
 package com.ufmg.pds.bancofilmes.services;
 
 import com.ufmg.pds.bancofilmes.domains.Movie;
+import com.ufmg.pds.bancofilmes.requests.MoviePostRequestBody;
+import com.ufmg.pds.bancofilmes.requests.MoviePutRequestBody;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -40,9 +42,15 @@ public class MovieServiceWithoutDB {
         .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));
   }
 
-  public Movie save(Movie movie) {
-    movie.setId(ThreadLocalRandom.current().nextLong(3, 99999));
+  public Movie save(MoviePostRequestBody moviePostRequestBody) {
+    Movie movie =
+        new Movie(
+            ThreadLocalRandom.current().nextLong(3, 99999),
+            moviePostRequestBody.getName(),
+            moviePostRequestBody.getDirector(),
+            moviePostRequestBody.getScore());
     movies.add(movie);
+
     return movie;
   }
 
@@ -50,8 +58,15 @@ public class MovieServiceWithoutDB {
     movies.remove(findById(id));
   }
 
-  public void replace(Movie movie) {
-    delete(movie.getId());
+  public void replace(MoviePutRequestBody moviePutRequestBody) {
+    delete(moviePutRequestBody.getId());
+
+    Movie movie =
+        new Movie(
+            moviePutRequestBody.getId(),
+            moviePutRequestBody.getName(),
+            moviePutRequestBody.getDirector(),
+            moviePutRequestBody.getScore());
     movies.add(movie);
   }
 }

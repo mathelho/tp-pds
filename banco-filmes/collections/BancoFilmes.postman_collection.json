@@ -31,7 +31,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Batman The Dark Knight\",\r\n    \"director\": \"Christopher Nolan\",\r\n    \"score\": 9.5\r\n}",
+					"raw": "{\r\n    \"name\": \"Interstellar\",\r\n    \"director\": \"Christopher Nolan\",\r\n    \"score\": 9.0\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -103,7 +103,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/movies/find?name=Batman Begins",
+					"raw": "localhost:8080/movies/find?name=Interstellar",
 					"host": [
 						"localhost"
 					],
@@ -115,7 +115,7 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "Batman Begins"
+							"value": "Interstellar"
 						}
 					]
 				}
