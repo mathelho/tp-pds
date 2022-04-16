@@ -17,7 +17,7 @@ class MovieServiceTest extends Specification {
 
 
         when:
-        def movies = movieService.listAll()
+        def movies = movieService.findAll()
 
         then:
         assert !movies.isEmpty()

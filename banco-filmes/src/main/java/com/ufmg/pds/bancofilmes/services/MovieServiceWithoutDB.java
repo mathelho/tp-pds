@@ -22,7 +22,7 @@ public class MovieServiceWithoutDB {
                 new Movie(2L, "Batman Begins", "Christopher Nolan", 8.8)));
   }
 
-  public List<Movie> listAll() {
+  public List<Movie> findAll() {
     return movies;
   }
 
