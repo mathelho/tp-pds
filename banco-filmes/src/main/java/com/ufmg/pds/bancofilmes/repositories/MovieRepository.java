@@ -1,9 +1,6 @@
 package com.ufmg.pds.bancofilmes.repositories;
 
 import com.ufmg.pds.bancofilmes.domains.Movie;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
-public interface MovieRepository {
-  List<Movie> listAll();
-}
+public interface MovieRepository extends JpaRepository<Movie, Long> {}

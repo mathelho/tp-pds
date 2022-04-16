@@ -4,10 +4,10 @@ import com.ufmg.pds.bancofilmes.domains.Movie
 import spock.lang.Specification
 
 class MovieServiceTest extends Specification {
-    MovieService movieService
+    MovieServiceWithoutDB movieService
 
     def setup() {
-        movieService = new MovieService()
+        movieService = new MovieServiceWithoutDB()
     }
 
     def "It should test"() {

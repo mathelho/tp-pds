@@ -1,7 +1,7 @@
 package com.ufmg.pds.bancofilmes.controllers;
 
 import com.ufmg.pds.bancofilmes.domains.Movie;
-import com.ufmg.pds.bancofilmes.services.MovieService;
+import com.ufmg.pds.bancofilmes.services.MovieServiceWithoutDB;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("movies")
 public class MovieController {
-  private final MovieService movieService = new MovieService();
+  private final MovieServiceWithoutDB movieService = new MovieServiceWithoutDB();
 
   @GetMapping
   public ResponseEntity<List<Movie>> listAll() {

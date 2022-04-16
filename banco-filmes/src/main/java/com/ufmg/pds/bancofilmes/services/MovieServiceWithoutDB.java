@@ -11,9 +11,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Service
-public class MovieService {
-  // private final MovieRepository movieRepository;
-
+public class MovieServiceWithoutDB {
   private static final List<Movie> movies;
 
   static {
