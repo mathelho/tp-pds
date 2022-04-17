@@ -25,13 +25,19 @@ public class MovieService {
   public Movie findById(Long id) {
     return movieRepository
         .findById(id)
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Movie not found"));
+        .orElseThrow(
+            () ->
+                new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, String.format("Movie with id %d not found", id)));
   }
 
   public Movie findByName(String name) {
     return movieRepository
         .findByName(name)
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));
+        .orElseThrow(
+            () ->
+                new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, String.format("Movie %s not found", name)));
   }
 
   public Movie save(MoviePostRequestBody moviePostRequestBody) {
