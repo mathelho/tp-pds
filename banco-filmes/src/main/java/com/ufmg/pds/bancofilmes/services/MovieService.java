@@ -1,14 +1,14 @@
 package com.ufmg.pds.bancofilmes.services;
 
 import com.ufmg.pds.bancofilmes.domains.Movie;
+import com.ufmg.pds.bancofilmes.mapper.MovieMapper;
 import com.ufmg.pds.bancofilmes.repositories.MovieRepository;
 import com.ufmg.pds.bancofilmes.requests.MoviePostRequestBody;
 import com.ufmg.pds.bancofilmes.requests.MoviePutRequestBody;
+import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
-import java.util.List;
 
 @Service
 public class MovieService {
@@ -35,12 +35,7 @@ public class MovieService {
   }
 
   public Movie save(MoviePostRequestBody moviePostRequestBody) {
-    Movie movie =
-        new Movie(
-            moviePostRequestBody.getName(),
-            moviePostRequestBody.getDirector(),
-            moviePostRequestBody.getScore());
-    return movieRepository.save(movie);
+    return movieRepository.save(MovieMapper.INSTANCE.toMovie(moviePostRequestBody));
   }
 
   public void delete(Long id) {
@@ -50,12 +45,8 @@ public class MovieService {
   public void replace(MoviePutRequestBody moviePutRequestBody) {
     Movie savedMovie = findById(moviePutRequestBody.getId());
 
-    Movie movie =
-        new Movie(
-            savedMovie.getId(),
-            moviePutRequestBody.getName(),
-            moviePutRequestBody.getDirector(),
-            moviePutRequestBody.getScore());
+    Movie movie = MovieMapper.INSTANCE.toMovie(moviePutRequestBody);
+    movie.setId(savedMovie.getId());
 
     movieRepository.save(movie);
   }

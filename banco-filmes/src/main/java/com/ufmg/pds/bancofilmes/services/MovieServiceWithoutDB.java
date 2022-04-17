@@ -1,16 +1,16 @@
 package com.ufmg.pds.bancofilmes.services;
 
 import com.ufmg.pds.bancofilmes.domains.Movie;
+import com.ufmg.pds.bancofilmes.mapper.MovieMapper;
 import com.ufmg.pds.bancofilmes.requests.MoviePostRequestBody;
 import com.ufmg.pds.bancofilmes.requests.MoviePutRequestBody;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class MovieServiceWithoutDB {
@@ -43,12 +43,8 @@ public class MovieServiceWithoutDB {
   }
 
   public Movie save(MoviePostRequestBody moviePostRequestBody) {
-    Movie movie =
-        new Movie(
-            ThreadLocalRandom.current().nextLong(3, 99999),
-            moviePostRequestBody.getName(),
-            moviePostRequestBody.getDirector(),
-            moviePostRequestBody.getScore());
+    Movie movie = MovieMapper.INSTANCE.toMovie(moviePostRequestBody);
+    movie.setId(ThreadLocalRandom.current().nextLong(3, 99999));
     movies.add(movie);
 
     return movie;
@@ -60,13 +56,6 @@ public class MovieServiceWithoutDB {
 
   public void replace(MoviePutRequestBody moviePutRequestBody) {
     delete(moviePutRequestBody.getId());
-
-    Movie movie =
-        new Movie(
-            moviePutRequestBody.getId(),
-            moviePutRequestBody.getName(),
-            moviePutRequestBody.getDirector(),
-            moviePutRequestBody.getScore());
-    movies.add(movie);
+    movies.add(MovieMapper.INSTANCE.toMovie(moviePutRequestBody));
   }
 }
