@@ -1,14 +1,13 @@
 package com.ufmg.pds.bancofilmes.services;
 
 import com.ufmg.pds.bancofilmes.domains.Movie;
+import com.ufmg.pds.bancofilmes.exceptions.NotFoundException;
 import com.ufmg.pds.bancofilmes.mapper.MovieMapper;
 import com.ufmg.pds.bancofilmes.repositories.MovieRepository;
 import com.ufmg.pds.bancofilmes.requests.MoviePostRequestBody;
 import com.ufmg.pds.bancofilmes.requests.MoviePutRequestBody;
 import java.util.List;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class MovieService {
@@ -25,19 +24,13 @@ public class MovieService {
   public Movie findById(Long id) {
     return movieRepository
         .findById(id)
-        .orElseThrow(
-            () ->
-                new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, String.format("Movie with id %d not found", id)));
+        .orElseThrow(() -> new NotFoundException(String.format("Movie with id %d not found", id)));
   }
 
   public Movie findByName(String name) {
     return movieRepository
         .findByName(name)
-        .orElseThrow(
-            () ->
-                new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, String.format("Movie %s not found", name)));
+        .orElseThrow(() -> new NotFoundException(String.format("Movie %s not found", name)));
   }
 
   public Movie save(MoviePostRequestBody moviePostRequestBody) {
