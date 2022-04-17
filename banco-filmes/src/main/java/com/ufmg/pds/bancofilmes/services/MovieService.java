@@ -8,6 +8,7 @@ import com.ufmg.pds.bancofilmes.requests.MoviePostRequestBody;
 import com.ufmg.pds.bancofilmes.requests.MoviePutRequestBody;
 import java.util.List;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MovieService {
@@ -33,6 +34,7 @@ public class MovieService {
         .orElseThrow(() -> new NotFoundException(String.format("Movie %s not found", name)));
   }
 
+  @Transactional
   public Movie save(MoviePostRequestBody moviePostRequestBody) {
     return movieRepository.save(MovieMapper.INSTANCE.toMovie(moviePostRequestBody));
   }
