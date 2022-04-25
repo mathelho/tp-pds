@@ -36,10 +36,24 @@ de construir um HOW TO, explicando como setar todas as variáveis necessárias e
 
 ## Possível MVP
 
-Para nosso MVP, planejamos colocar o sistema já funcional com aproximadamente 7 funcionalidades básicas, sendo esse um MVP do tipo --TIPO AQUI---.
+Para nosso MVP, planejamos colocar o sistema já funcional com aproximadamente 5 funcionalidades básicas no backEnd, com um frontEnd já funcional contendo aproximadamente 5 telas. Ainda,
+este será um MVP do tipo Protótipo.
+
 ### Funcionalidades:
- - getFilme: Almejamos tornar possível obterm certas informações sobre um filme tais como o Diretor do mesmo, seu Nome e sua Nota.
- - 
+ - findByName: Retorna certas informações sobre um filme tais como o Diretor do mesmo, seu Nome e sua Nota.
+ - listAll: Comando para listar todos os fiulmes que teremos adicionados ao banco;
+ - save: Comando para realizar um post no BackEnd para salvar um filme no Banco;
+ - delete: Comando para deletar um filme salvo no banco, sendo este filme definido pelo seu 'id';
+ - replace: Atualiza uma entrada do banco com as informações enviadas, através do ID daquela entrada;
+
+### Front
+Para o frontEnd pretendemos construir 5 telas que estão diretamente relacionadas as nossas funções implementadas no Back.
+São elas:
+- Tela Inicial: Contendo uma preview com os filmes obtidos através do listAll;
+- Tela de Filtro/Pesquisa: Inicialmente irá utilizar somente a função de 'findByName' que implementaremos e então, podemos adicionar outros filmes se houver tempo hábil;
+- Tela de Ranking: Contendo um ranking com os filmes mais bem avaliados no nosso sistema <função a definir>;
+- Tela do Filme: Contendo informações como sinopses, notas, onde assistir e afins; através da função 'findByName'
+- Tela de Review/Avaliações: Contendo campos para entradas de notas dos usuários sobre os filmes;
 
 Queremos demonstrar como seria o funcionamento básico do sistema a partir dessas funcionalidades implementadas, dando a visão e já explicando
 que diversas outras funcionalidades seriam implementadas caso a idéia estivesse boa, podendo claor, ocorrer diversas alterações no sistema
