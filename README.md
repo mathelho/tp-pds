@@ -9,6 +9,7 @@ no minimo enquanto dividirmos as subtasks entre os componentes da equipe.
 - Linguagem: Java
 - Foco: Backend
 - Backlog Básico: [TP de PDS | Trello](https://trello.com/invite/b/EOYUriw7/043fc864e7947228dec9c58ca784468c/tppdsalternativobacklogeafins)
+- Figma: [BancoDeFilmes](https://www.figma.com/file/n67ExnIeSd5CPKFcjz1h5m/BancoDeFilmes?node-id=0%3A1)
 
 ## Funções dos membros
 
@@ -32,7 +33,10 @@ Após instalar as ferramentas necessárias você estará apto a utilizar o siste
 de construir um HOW TO, explicando como setar todas as variáveis necessárias e organizar o ambiente para que o usuário consiga efetivamente utiliza-lo)
 
 ## Step-bystep
-- Para rodar o sistema pela primeira vez, execute um "docker-compose-up" estando no diretório banco de filmes /Users/celsos/Documents/UFMG/PDS_Alternativo/tp-pds/banco-filmes
+- Para rodar o sistema pela primeira vez, execute um "docker-compose-up" estando no diretório tp-pds/banco-filmes
+- Após, execute um mvn clean install
+- Então rode o projeto no IntelliJ para colocar o host online;
+- Importe o arquivo JSON dentro do diretório "collection" no nosso projeto para o Postman, e então, use as funções que já desenvolvemos até então.
 
 ## Possível MVP
 
