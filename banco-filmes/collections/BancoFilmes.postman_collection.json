@@ -71,7 +71,7 @@
 			"response": []
 		},
 		{
-			"name": "replaceByName",
+			"name": "replace",
 			"request": {
 				"method": "PUT",
 				"header": [],
