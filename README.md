@@ -27,6 +27,8 @@ Para começar a utilizar Banco de filmes é necessário atendes a alguns pré re
 - Instalar Docker
 - Instalar MySQL Workbench
 - Instalar Postman
+- Instalar o Node.js
+- Instalar o Yarn (opcional, pode-se usar o gerenciador padrão do Node também)
 
 Após instalar as ferramentas necessárias você estará apto a utilizar o sistema de forma completa. (Ou não, necessário verificar a necessidade
 de construir um HOW TO, explicando como setar todas as variáveis necessárias e organizar o ambiente para que o usuário consiga efetivamente utiliza-lo)
@@ -137,3 +139,61 @@ Persistir dados no banco de dados com a dependência Spring JPA
 
 ### Cadastrar usuário
 [POC] Estudar como fazer cadastro de usuário utilizando Springboot e apresentar resultados para o time. [Felipe]
+
+## Backlog Front-end
+
+### Modelar/prototipar telas no Figma
+Para que se tenha uma melhor concepção do que irá ser implementado na interface do usuário, serão modeladas telas no Figma para isso e para ver antecipadamente como poderia ser o visual da aplicação.
+#### Tarefas:
+- 1 - Modelar tela principal da listagem de filmes [Natan]
+- 2 - Modelar tela de busca/filtragem de filmes [Natan]
+- 3 - Modelar tela que mostra mais informações de um filme selecionado [Natan]
+- 4 - Modelar tela/modal de avaliação do filme [Natan]
+- 5 - Modelar tela de ranking de filmes [Natan]
+
+### Gerar projeto React
+Será gerado o projeto do ReactJS com template de TypeScript dentro do trabalho.
+#### Tarefas:
+- 1 - Gerar projeto/aplicação do React [Matheus]
+
+### Integrar Spring Boot API com React
+Para se certificar do funcionamento, serão testados dentro da aplicação React as rotas ou endpoints do Spring Boot.
+#### Tarefas:
+- 1 - Verificar resposta do endpoint /movies dentro do React [Matheus]
+- 2 - Declarar uma interface com os atributos recebidos do JSON [Matheus]
+- 3 - Verificar se o JSON é convertido corretamente para objetos [Matheus]
+
+### Implementar tela principal de listagem de filmes
+Fazer a estilização e componentização da tela principal, que exibe os filmes do banco.
+#### Tarefas:
+- 1 - Estruturar o componente do cabeçalho [Matheus]
+- 2 - Estruturar o componente da listagem de filmes [Matheus]
+  - Puxar os dados da API do Spring Boot para serem manipulados e listados
+- 3 - Estruturar o componente do card dos filmes [Matheus]
+- 4 - Estilizar os componentes acima [Matheus]
+
+### Implementar filtro/busca de filmes
+Fazer a componentização e estilização da tela que receberá as entradas do usuário para realizar uma busca no banco de filmes.
+#### Tarefas:
+- 1 - Estruturar o componente da tela de busca [Matheus]
+- 2 - Estilizar o componente [Matheus]
+- 3 - Filtrar o banco de filmes e retornar o resultado [Matheus]
+
+### Implementar tela de descrição do filme
+Fazer a componentização e estilização da tela que exibirá informações mais detalhadas sobre um filme que for selecionado pelo usuário, como descrição e notas.
+#### Tarefas:
+- 1 - Estruturar o componente da tela de descrição [Matheus]
+- 2 - Estilizar o componente [Matheus]
+
+### Implementar tela de avaliação do filme
+Fazer a componentização e estilização da tela que exibirá 5 estrelas que o usuário deverá selecionar de acordo com a nota (em estrelas) que ele dará para o filme em questão. Após clicar na quantidade de estrelas desejada, o valor computado irá somar a média do filme avaliado.
+#### Tarefas:
+- 1 - Estruturar o componente da tela de avaliação [Matheus]
+- 2 - Estilizar o componente [Matheus]
+
+### Implementar tela da Watch List
+Fazer a estilização e componentização da tela da Watch List, que irá exibir a lista com todos os filmes que o usuário adicionou.
+#### Tarefas:
+- 1 - Estruturar o componente da watch list (poderá ser similar ou o mesmo da listagem principal) [Matheus]
+- 2 - Estilizar o componente [Matheus]
+- 3 - Implementar a lógica de salvar e recuperar os filmes da watch list [Matheus]
