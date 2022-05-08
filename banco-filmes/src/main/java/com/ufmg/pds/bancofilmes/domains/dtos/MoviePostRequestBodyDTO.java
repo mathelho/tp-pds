@@ -1,12 +1,9 @@
-package com.ufmg.pds.bancofilmes.requests;
+package com.ufmg.pds.bancofilmes.domains.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.Objects;
 
-public class MoviePutRequestBody {
-  private Long id;
-
+public class MoviePostRequestBodyDTO {
   @JsonProperty("name")
   private String name;
 
@@ -16,20 +13,12 @@ public class MoviePutRequestBody {
   @JsonProperty("score")
   private Double score;
 
-  public MoviePutRequestBody() {}
+  public MoviePostRequestBodyDTO() {}
 
-  public MoviePutRequestBody(String name, String director, Double score) {
+  public MoviePostRequestBodyDTO(String name, String director, Double score) {
     this.name = name;
     this.director = director;
     this.score = score;
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
   }
 
   public String getName() {
@@ -61,7 +50,7 @@ public class MoviePutRequestBody {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
 
-    MoviePutRequestBody that = (MoviePutRequestBody) o;
+    MoviePostRequestBodyDTO that = (MoviePostRequestBodyDTO) o;
 
     if (!Objects.equals(name, that.name)) return false;
     if (!Objects.equals(director, that.director)) return false;

@@ -1,21 +1,23 @@
-package com.ufmg.pds.bancofilmes.domains;
+package com.ufmg.pds.bancofilmes.domains.dtos;
 
-public class Movie {
+import java.util.Objects;
+
+public class MovieDTO {
   private Long id;
   private String name;
   private String director;
   private Double score;
 
-  public Movie() {}
+  public MovieDTO() {}
 
-  public Movie(Long id, String name, String director, Double score) {
+  public MovieDTO(Long id, String name, String director, Double score) {
     this.id = id;
     this.name = name;
     this.director = director;
     this.score = score;
   }
 
-  public Movie(String name, String director, Double score) {
+  public MovieDTO(String name, String director, Double score) {
     this.name = name;
     this.director = director;
     this.score = score;
@@ -55,29 +57,39 @@ public class Movie {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
 
-    Movie movie = (Movie) o;
+    MovieDTO movieDTO = (MovieDTO) o;
 
-    if (!id.equals(movie.id)) return false;
-    if (!name.equals(movie.name)) return false;
-    if (!director.equals(movie.director)) return false;
-    return score.equals(movie.score);
+    if (!Objects.equals(id, movieDTO.id)) {
+      return false;
+    }
+    if (!Objects.equals(name, movieDTO.name)) {
+      return false;
+    }
+    if (!Objects.equals(director, movieDTO.director)) {
+      return false;
+    }
+    return Objects.equals(score, movieDTO.score);
   }
 
   @Override
   public int hashCode() {
-    int result = id.hashCode();
-    result = 31 * result + name.hashCode();
-    result = 31 * result + director.hashCode();
-    result = 31 * result + score.hashCode();
+    int result = id != null ? id.hashCode() : 0;
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    result = 31 * result + (director != null ? director.hashCode() : 0);
+    result = 31 * result + (score != null ? score.hashCode() : 0);
     return result;
   }
 
   @Override
   public String toString() {
-    return "Movie{"
+    return "MovieDTO{"
         + "id="
         + id
         + ", name='"

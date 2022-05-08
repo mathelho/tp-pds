@@ -1,12 +1,13 @@
 package com.ufmg.pds.bancofilmes.controllers;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import com.ufmg.pds.bancofilmes.adapters.controllers.MovieController;
 import com.ufmg.pds.bancofilmes.services.MovieServiceWithoutDB;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @WebMvcTest
 class MovieControllerTest {
