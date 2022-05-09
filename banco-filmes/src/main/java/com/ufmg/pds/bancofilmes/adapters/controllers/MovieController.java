@@ -1,6 +1,6 @@
 package com.ufmg.pds.bancofilmes.adapters.controllers;
 
-import com.ufmg.pds.bancofilmes.domains.dtos.MovieDTO;
+import com.ufmg.pds.bancofilmes.domains.Movie;
 import com.ufmg.pds.bancofilmes.domains.dtos.MoviePostRequestBodyDTO;
 import com.ufmg.pds.bancofilmes.domains.dtos.MoviePutRequestBodyDTO;
 import com.ufmg.pds.bancofilmes.domains.ports.interfaces.MovieServicePort;
@@ -28,22 +28,22 @@ public class MovieController {
   }
 
   @GetMapping
-  public ResponseEntity<List<MovieDTO>> findAll() {
+  public ResponseEntity<List<Movie>> findAll() {
     return ResponseEntity.ok(movieService.listAll());
   }
 
   @GetMapping(path = "/find")
-  public ResponseEntity<MovieDTO> findByName(@RequestParam String name) {
+  public ResponseEntity<Movie> findByName(@RequestParam String name) {
     return ResponseEntity.ok(movieService.findByName(name));
   }
 
   @GetMapping(path = "/{id}")
-  public ResponseEntity<MovieDTO> findById(@PathVariable Long id) {
+  public ResponseEntity<Movie> findById(@PathVariable Long id) {
     return new ResponseEntity<>(movieService.findById(id), HttpStatus.OK);
   }
 
   @PostMapping
-  public ResponseEntity<MovieDTO> save(@RequestBody MoviePostRequestBodyDTO movie) {
+  public ResponseEntity<Movie> save(@RequestBody MoviePostRequestBodyDTO movie) {
     return new ResponseEntity<>(movieService.save(movie), HttpStatus.CREATED);
   }
 

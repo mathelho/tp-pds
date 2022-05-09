@@ -25,12 +25,13 @@ public class MovieRepository implements MovieRepositoryPort {
   @Override
   public Optional<Movie> findById(Long id) {
     Optional<MovieEntity> movie = springMovieRepository.findById(id);
-    return movie.isEmpty() ? ;
+    return Optional.ofNullable(MovieMapper.INSTANCE.toMovie(movie.get()));
   }
 
   @Override
   public Optional<Movie> findByName(String name) {
-    return springMovieRepository.findByName(name);
+    Optional<MovieEntity> movie = springMovieRepository.findByName(name);
+    return Optional.ofNullable(MovieMapper.INSTANCE.toMovie(movie.get()));
   }
 
   @Override

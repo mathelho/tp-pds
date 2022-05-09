@@ -6,7 +6,6 @@ import com.ufmg.pds.bancofilmes.domains.dtos.MoviePutRequestBodyDTO;
 import com.ufmg.pds.bancofilmes.domains.ports.interfaces.MovieServicePort;
 import com.ufmg.pds.bancofilmes.domains.ports.repositories.MovieRepositoryPort;
 import com.ufmg.pds.bancofilmes.exceptions.NotFoundException;
-import com.ufmg.pds.bancofilmes.infrastructure.adapters.entities.MovieEntity;
 import com.ufmg.pds.bancofilmes.mapper.MovieMapper;
 import java.util.List;
 
@@ -49,10 +48,10 @@ public class MovieService implements MovieServicePort {
   @Override
   public void replace(MoviePutRequestBodyDTO movie) {
     Movie savedMovie = findById(movie.getId());
-    movie.setId(savedMovie.getId());
-    // TODO a mapper here
-    MovieEntity replaceMovie = new MovieEntity();
-    replaceMovie.setId(savedMovie.getId());
-    springMovieRepository.save(replaceMovie);
+
+    Movie movieToBeSaved = MovieMapper.INSTANCE.toMovie(movie);
+    movieToBeSaved.setId(savedMovie.getId());
+
+    movieRepositoryPort.save(movieToBeSaved);
   }
 }
