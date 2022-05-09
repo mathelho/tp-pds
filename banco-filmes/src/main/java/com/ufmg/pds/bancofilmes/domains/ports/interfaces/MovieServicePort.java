@@ -6,16 +6,16 @@ import com.ufmg.pds.bancofilmes.domains.dtos.MoviePutRequestBodyDTO;
 import java.util.List;
 
 public interface MovieServicePort {
-  public List<Movie> listAll();
+  List<Movie> listAll();
 
-  public Movie findById(Long id);
+  Movie findById(Long id);
 
-  public Movie findByName(String name);
+  Movie findByName(String name);
 
   // @Transactional
-  public Movie save(MoviePostRequestBodyDTO movie);
+  Movie save(MoviePostRequestBodyDTO movie);
 
-  public void delete(Long id);
+  void delete(Long id);
 
-  public void replace(MoviePutRequestBodyDTO movie);
+  void replace(MoviePutRequestBodyDTO movie);
 }

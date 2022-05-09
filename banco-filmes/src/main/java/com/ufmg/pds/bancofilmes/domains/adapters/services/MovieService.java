@@ -3,10 +3,10 @@ package com.ufmg.pds.bancofilmes.domains.adapters.services;
 import com.ufmg.pds.bancofilmes.domains.Movie;
 import com.ufmg.pds.bancofilmes.domains.dtos.MoviePostRequestBodyDTO;
 import com.ufmg.pds.bancofilmes.domains.dtos.MoviePutRequestBodyDTO;
+import com.ufmg.pds.bancofilmes.domains.mappers.MovieMapper;
 import com.ufmg.pds.bancofilmes.domains.ports.interfaces.MovieServicePort;
 import com.ufmg.pds.bancofilmes.domains.ports.repositories.MovieRepositoryPort;
 import com.ufmg.pds.bancofilmes.exceptions.NotFoundException;
-import com.ufmg.pds.bancofilmes.mapper.MovieMapper;
 import java.util.List;
 
 public class MovieService implements MovieServicePort {
