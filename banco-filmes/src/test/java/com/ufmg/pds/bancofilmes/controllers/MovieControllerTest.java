@@ -1,4 +1,4 @@
-package com.ufmg.pds.bancofilmes.controllers;
+/*package com.ufmg.pds.bancofilmes.controllers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -18,4 +18,4 @@ class MovieControllerTest {
   void itShouldTest() {
     assertEquals(1, 1);
   }
-}
+}*/

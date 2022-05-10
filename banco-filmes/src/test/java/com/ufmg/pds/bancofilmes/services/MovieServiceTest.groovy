@@ -1,4 +1,4 @@
-package com.ufmg.pds.bancofilmes.services
+/*package com.ufmg.pds.bancofilmes.services
 
 import com.ufmg.pds.bancofilmes.domains.Movie
 import spock.lang.Specification
@@ -26,4 +26,4 @@ class MovieServiceTest extends Specification {
         assert movies.get(0) == movie1
         assert movies.get(1) == movie2
     }
-}
+}*/
