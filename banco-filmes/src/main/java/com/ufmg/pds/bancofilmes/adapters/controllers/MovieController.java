@@ -1,9 +1,9 @@
-package com.ufmg.pds.bancofilmes.controllers;
+package com.ufmg.pds.bancofilmes.adapters.controllers;
 
 import com.ufmg.pds.bancofilmes.domains.Movie;
-import com.ufmg.pds.bancofilmes.requests.MoviePostRequestBody;
-import com.ufmg.pds.bancofilmes.requests.MoviePutRequestBody;
-import com.ufmg.pds.bancofilmes.services.MovieService;
+import com.ufmg.pds.bancofilmes.domains.dtos.MoviePostRequestBodyDTO;
+import com.ufmg.pds.bancofilmes.domains.dtos.MoviePutRequestBodyDTO;
+import com.ufmg.pds.bancofilmes.domains.ports.interfaces.MovieServicePort;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,15 +21,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("movies")
 public class MovieController {
 
-  private final MovieService movieService;
+  private final MovieServicePort movieService;
 
-  public MovieController(MovieService movieService) {
+  public MovieController(MovieServicePort movieService) {
     this.movieService = movieService;
   }
 
   @GetMapping
   public ResponseEntity<List<Movie>> findAll() {
-    return ResponseEntity.ok(movieService.findAll());
+    return ResponseEntity.ok(movieService.listAll());
   }
 
   @GetMapping(path = "/find")
@@ -43,7 +43,7 @@ public class MovieController {
   }
 
   @PostMapping
-  public ResponseEntity<Movie> save(@RequestBody MoviePostRequestBody movie) {
+  public ResponseEntity<Movie> save(@RequestBody MoviePostRequestBodyDTO movie) {
     return new ResponseEntity<>(movieService.save(movie), HttpStatus.CREATED);
   }
 
@@ -54,7 +54,7 @@ public class MovieController {
   }
 
   @PutMapping
-  public ResponseEntity<Void> replace(@RequestBody MoviePutRequestBody movie) {
+  public ResponseEntity<Void> replace(@RequestBody MoviePutRequestBodyDTO movie) {
     movieService.replace(movie);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
