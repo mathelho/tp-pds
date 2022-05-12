@@ -1,4 +1,3 @@
-import { Filter } from "./components/Filter";
 import { Header } from "./components/Header";
 import { MovieList } from "./components/MovieList";
 

@@ -1,10 +1,10 @@
-import { Filter } from "./Filter";
+import { FilterButton } from "./FilterButton";
 import { MovieCard } from "./MovieCard";
 
 export function MovieList() {
     return (
         <>
-            <Filter />
+            <FilterButton />
 
             <section className="mx-auto my-0 px-10">
 

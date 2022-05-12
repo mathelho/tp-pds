@@ -1,7 +1,7 @@
 export function MovieCard() {
     return (
-        <button className="w-32 h-48 bg-white text-zinc-700 rounded-2xl" type="button">
+        <div className="w-32 h-48 p-2 break-all bg-transparent text-white rounded-2xl border-2 hover:border-[#CA7613] hover:cursor-pointer transition-all">
             Filme
-        </button>
+        </div>
     );
 }
