@@ -1,26 +1,54 @@
 package com.ufmg.pds.bancofilmes.domains.dtos;
 
-import java.util.Objects;
+import com.ufmg.pds.bancofilmes.domains.GenreEnum;
+import com.ufmg.pds.bancofilmes.domains.WhereToWatchEnum;
 
 public class MovieDTO {
   private Long id;
-  private String name;
+  private String title;
   private String director;
   private Double score;
+  private String synopsis;
+  private GenreEnum genre;
+  private WhereToWatchEnum whereToWatch;
+  private String imageUrl;
 
   public MovieDTO() {}
 
-  public MovieDTO(Long id, String name, String director, Double score) {
-    this.id = id;
-    this.name = name;
+  public MovieDTO(
+      String title,
+      String director,
+      Double score,
+      String synopsis,
+      GenreEnum genre,
+      WhereToWatchEnum whereToWatch,
+      String imageUrl) {
+    this.title = title;
     this.director = director;
     this.score = score;
+    this.synopsis = synopsis;
+    this.genre = genre;
+    this.whereToWatch = whereToWatch;
+    this.imageUrl = imageUrl;
   }
 
-  public MovieDTO(String name, String director, Double score) {
-    this.name = name;
+  public MovieDTO(
+      Long id,
+      String title,
+      String director,
+      Double score,
+      String synopsis,
+      GenreEnum genre,
+      WhereToWatchEnum whereToWatch,
+      String imageUrl) {
+    this.id = id;
+    this.title = title;
     this.director = director;
     this.score = score;
+    this.synopsis = synopsis;
+    this.genre = genre;
+    this.whereToWatch = whereToWatch;
+    this.imageUrl = imageUrl;
   }
 
   public Long getId() {
@@ -31,12 +59,12 @@ public class MovieDTO {
     this.id = id;
   }
 
-  public String getName() {
-    return name;
+  public String getTitle() {
+    return title;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
   public String getDirector() {
@@ -55,51 +83,35 @@ public class MovieDTO {
     this.score = score;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-
-    MovieDTO movieDTO = (MovieDTO) o;
-
-    if (!Objects.equals(id, movieDTO.id)) {
-      return false;
-    }
-    if (!Objects.equals(name, movieDTO.name)) {
-      return false;
-    }
-    if (!Objects.equals(director, movieDTO.director)) {
-      return false;
-    }
-    return Objects.equals(score, movieDTO.score);
+  public String getSynopsis() {
+    return synopsis;
   }
 
-  @Override
-  public int hashCode() {
-    int result = id != null ? id.hashCode() : 0;
-    result = 31 * result + (name != null ? name.hashCode() : 0);
-    result = 31 * result + (director != null ? director.hashCode() : 0);
-    result = 31 * result + (score != null ? score.hashCode() : 0);
-    return result;
+  public void setSynopsis(String synopsis) {
+    this.synopsis = synopsis;
   }
 
-  @Override
-  public String toString() {
-    return "MovieDTO{"
-        + "id="
-        + id
-        + ", name='"
-        + name
-        + '\''
-        + ", director='"
-        + director
-        + '\''
-        + ", score="
-        + score
-        + '}';
+  public GenreEnum getGenre() {
+    return genre;
+  }
+
+  public void setGenre(GenreEnum genre) {
+    this.genre = genre;
+  }
+
+  public WhereToWatchEnum getWhereToWatch() {
+    return whereToWatch;
+  }
+
+  public void setWhereToWatch(WhereToWatchEnum whereToWatch) {
+    this.whereToWatch = whereToWatch;
+  }
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
   }
 }

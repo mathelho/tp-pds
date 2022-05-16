@@ -9,7 +9,7 @@ public interface MovieRepositoryPort {
 
   Optional<Movie> findById(Long id);
 
-  Optional<Movie> findByName(String name);
+  Optional<Movie> findByTitle(String title);
 
   Movie save(Movie movie);
 

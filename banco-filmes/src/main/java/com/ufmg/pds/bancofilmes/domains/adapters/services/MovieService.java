@@ -29,10 +29,10 @@ public class MovieService implements MovieServicePort {
   }
 
   @Override
-  public Movie findByName(String name) {
+  public Movie findByTitle(String title) {
     return movieRepositoryPort
-        .findByName(name)
-        .orElseThrow(() -> new NotFoundException(String.format("Movie %s not found", name)));
+        .findByTitle(title)
+        .orElseThrow(() -> new NotFoundException(String.format("Movie %s not found", title)));
   }
 
   @Override

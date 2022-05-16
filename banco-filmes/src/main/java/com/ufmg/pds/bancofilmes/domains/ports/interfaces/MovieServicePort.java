@@ -10,7 +10,7 @@ public interface MovieServicePort {
 
   Movie findById(Long id);
 
-  Movie findByName(String name);
+  Movie findByTitle(String title);
 
   // @Transactional
   Movie save(MoviePostRequestBodyDTO movie);

@@ -29,8 +29,8 @@ public class MovieRepository implements MovieRepositoryPort {
   }
 
   @Override
-  public Optional<Movie> findByName(String name) {
-    Optional<MovieEntity> movie = springMovieRepository.findByName(name);
+  public Optional<Movie> findByTitle(String title) {
+    Optional<MovieEntity> movie = springMovieRepository.findByTitle(title);
     return Optional.ofNullable(MovieEntityMapper.INSTANCE.toMovie(movie.get()));
   }
 
