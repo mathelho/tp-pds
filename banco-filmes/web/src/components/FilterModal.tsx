@@ -11,7 +11,7 @@ export function FilterModal() {
 
             <h2 className="text-xl my-3">Gênero</h2>
             <select className="w-[50%] h-8 rounded-md bg-transparent border-2 border-[#CA7613]" name="genre" id="genre">
-                <option className="text-black" selected>Selecione um gênero...</option>
+                <option className="text-black" defaultValue={''}>Selecione um gênero...</option>
                 <option className="text-black" value="acao">Ação</option>
                 <option className="text-black" value="comedia">Comédia</option>
             </select>
