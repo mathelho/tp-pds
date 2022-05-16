@@ -4,9 +4,13 @@ import { MovieCard } from "./MovieCard";
 
 interface BancoDeFilmes {
     id: number,
-    name: string,
+    title: string,
     director: string,
-    score: number
+    score: number,
+    synopsis: string,
+    genre: string,
+    whereToWatch: string,
+    imageUrl: string
 }
 
 export function MovieList() {
@@ -27,7 +31,7 @@ export function MovieList() {
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-y-3">
                     {movieList.map(movie => {
                         console.log(movie);
-                        return <MovieCard key={movie.id} name={movie.name} score={movie.score} />
+                        return <MovieCard key={movie.id} title={movie.title} score={movie.score} />
                     })}
                 </div>
             </section>
