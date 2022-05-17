@@ -44,6 +44,11 @@ public class MovieController {
     return new ResponseEntity<>(movieService.findById(id), HttpStatus.OK);
   }
 
+  @GetMapping(path = "/top")
+  public ResponseEntity<List<Movie>> getTop() {
+    return ResponseEntity.ok(movieService.getTopTen());
+  }
+
   @PostMapping
   public ResponseEntity<Movie> save(@RequestBody MoviePostRequestBodyDTO movie) {
     return new ResponseEntity<>(movieService.save(movie), HttpStatus.CREATED);

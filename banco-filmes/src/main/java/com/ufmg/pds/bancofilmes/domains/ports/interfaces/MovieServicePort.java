@@ -18,4 +18,6 @@ public interface MovieServicePort {
   void delete(Long id);
 
   void replace(MoviePutRequestBodyDTO movie);
+
+  List<Movie> getTopTen();
 }
