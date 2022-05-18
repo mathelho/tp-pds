@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class MovieEntity {
@@ -15,24 +19,33 @@ public class MovieEntity {
   private Long id;
 
   @JsonProperty("title")
+  @NotEmpty
   private String title;
 
   @JsonProperty("director")
+  @NotEmpty(message = "The director should not be empty")
   private String director;
 
   @JsonProperty("score")
+  @NotNull(message = "The Score should not be null")
+  @Min(value = 1, message = "The score must not be lower than 1")
+  @Max(value = 10, message = "The score must not be higher than 10")
   private Double score;
 
   @JsonProperty("synopsis")
+  @NotEmpty
   private String synopsis;
 
   @JsonProperty("genre")
+  @NotNull(message = "Movies need to have a genre")
   private GenreEnum genre;
 
   @JsonProperty("whereToWatch")
+  @NotNull(message = "Needs  have at least one streaming option")
   private WhereToWatchEnum whereToWatch;
 
   @JsonProperty("imageUrl")
+  @NotEmpty
   private String imageUrl;
 
   public MovieEntity() {}
