@@ -121,6 +121,25 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "getTopTen",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/movies/top",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"top"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

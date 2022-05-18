@@ -54,4 +54,9 @@ public class MovieService implements MovieServicePort {
 
     movieRepositoryPort.save(movieToBeSaved);
   }
+
+  @Override
+  public List<Movie> getTopTen() {
+    return movieRepositoryPort.getTopTen();
+  }
 }

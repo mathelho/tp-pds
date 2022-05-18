@@ -50,4 +50,10 @@ public class MovieRepository implements MovieRepositoryPort {
   public void replace(Movie movie) {
     springMovieRepository.save(MovieEntityMapper.INSTANCE.toMovieEntity(movie));
   }
+
+  @Override
+  public List<Movie> getTopTen() {
+    List<MovieEntity> topMovies = springMovieRepository.getTopTen();
+    return topMovies.stream().map(MovieEntityMapper.INSTANCE::toMovie).toList();
+  }
 }

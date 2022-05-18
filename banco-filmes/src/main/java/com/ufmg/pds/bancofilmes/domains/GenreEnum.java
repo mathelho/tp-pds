@@ -1,7 +1,17 @@
 package com.ufmg.pds.bancofilmes.domains;
 
 public enum GenreEnum {
-  ADVENTURE("Adventure");
+  ACTION("Action"),
+  ADVENTURE("Adventure"),
+  COMEDY("Comedy"),
+  DRAMA("Drama"),
+  FANTASY("Fantasy"),
+  HORROR("Horror"),
+  HISTORICAL("Historical"),
+  MYSTERY("Mystery"),
+  ROMANCE("Romance"),
+  SCIENCE_FICTION("Science Fiction"),
+  THRILLER("Thriller");
 
   private final String value;
 
