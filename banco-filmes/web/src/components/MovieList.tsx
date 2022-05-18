@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { FilterButton } from "./FilterButton";
 import { MovieCard } from "./MovieCard";
+import { MovieInfo } from "./MovieInfo";
 
-interface BancoDeFilmes {
+export interface BancoDeFilmes {
     id: number,
     title: string,
     director: string,
@@ -13,28 +14,48 @@ interface BancoDeFilmes {
     imageUrl: string
 }
 
-export function MovieList() {
+interface MovieListProps {
+    onHomeOpen: boolean,
+    setIsHomeOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export function MovieList({ onHomeOpen, setIsHomeOpen }: MovieListProps) {
     const [movieList, setMovieList] = useState<BancoDeFilmes[]>([]);
+    const [movieChosen, setMovieChosen] = useState<BancoDeFilmes | null>(null);
 
     useEffect(() => {
-        fetch('http://localhost:8080/movies')
-        .then(response => response.json())
-        .then(data => setMovieList(data))
-    }, [])
+        if (onHomeOpen) {
+            fetch('http://localhost:8080/movies')
+            .then(response => response.json())
+            .then(data => setMovieList(data))
+        }
+    }, [onHomeOpen])
+
+    useEffect(() => {
+        if (movieChosen) {
+            setIsHomeOpen(false);
+        }
+    }, [movieChosen])
 
     return (
         <>
-            <FilterButton />
+            {onHomeOpen ? (
+                <>
+                    <FilterButton movieList={movieList} setMovieList={setMovieList} setIsHomeOpen={setIsHomeOpen} />
 
-            <section className="mx-auto my-0 px-10">
+                    <section className="mx-auto my-0 px-10">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-y-3">
+                            {movieList.map(movie => {
+                                return <MovieCard key={movie.id} movie={movie} setMovieChosen={setMovieChosen} />
+                            })}
+                        </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-y-3">
-                    {movieList.map(movie => {
-                        console.log(movie);
-                        return <MovieCard key={movie.id} title={movie.title} score={movie.score} />
-                    })}
-                </div>
-            </section>
+                    </section>
+                </>
+            ) : (
+                <MovieInfo movieChosen={movieChosen} />
+            )}
         </>
+        
     );
 }

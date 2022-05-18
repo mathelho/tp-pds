@@ -1,14 +1,24 @@
 import { Popover } from "@headlessui/react";
 import { FormEvent, useState } from "react";
 import { CloseButton } from "./CloseButton";
+import { BancoDeFilmes } from "./MovieList";
 
-export function FilterModal() {
-    const [titleQuery, setTitleQuery] = useState(''); // armazena o texto no input de título
-    const [genreQuery, setGenreQuery] = useState(''); // armazena o texto no input de gênero
+interface FilterModalProps {
+    movieList: BancoDeFilmes[];
+    setMovieList: React.Dispatch<React.SetStateAction<BancoDeFilmes[]>>;
+    setIsHomeOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export function FilterModal({ movieList, setMovieList, setIsHomeOpen }: FilterModalProps) {
+    const [titleQuery, setTitleQuery] = useState(''); // armazena o texto do input de título
+    const [genreQuery, setGenreQuery] = useState(''); // armazena o texto do input de gênero
 
     function handleFilter() {
     
         console.log(titleQuery, genreQuery);
+        const filteredMovieList = movieList.filter(movie => movie.title.toUpperCase().includes(titleQuery.toUpperCase()));
+
+        setMovieList(filteredMovieList);
         
     }
 
@@ -37,6 +47,8 @@ export function FilterModal() {
                     <option className="text-black" value="acao">Ação</option>
                     <option className="text-black" value="comedia">Comédia</option>
             </select>
+
+            <span>Buscar por nota do IMDB</span>
 
             <Popover.Button onClick={handleFilter} className='absolute right-6 bottom-6'>
                 Buscar
