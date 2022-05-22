@@ -1,6 +1,7 @@
 package com.ufmg.pds.bancofilmes.infrastructure.adapters.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ufmg.pds.bancofilmes.domains.AdvisoryRatingEnum;
 import com.ufmg.pds.bancofilmes.domains.GenreEnum;
 import com.ufmg.pds.bancofilmes.domains.WhereToWatchEnum;
 import javax.persistence.Entity;
@@ -41,12 +42,15 @@ public class MovieEntity {
   private GenreEnum genre;
 
   @JsonProperty("whereToWatch")
-  @NotNull(message = "Needs  have at least one streaming option")
+  @NotNull(message = "Needs have at least one streaming option")
   private WhereToWatchEnum whereToWatch;
 
   @JsonProperty("imageUrl")
   @NotEmpty
   private String imageUrl;
+
+  @JsonProperty("advisoryRating")
+  private AdvisoryRatingEnum advisoryRating;
 
   public MovieEntity() {}
 
@@ -58,7 +62,8 @@ public class MovieEntity {
       String synopsis,
       GenreEnum genre,
       WhereToWatchEnum whereToWatch,
-      String imageUrl) {
+      String imageUrl,
+      AdvisoryRatingEnum advisoryRating) {
     this.id = id;
     this.title = title;
     this.director = director;
@@ -67,6 +72,7 @@ public class MovieEntity {
     this.genre = genre;
     this.whereToWatch = whereToWatch;
     this.imageUrl = imageUrl;
+    this.advisoryRating = advisoryRating;
   }
 
   public Long getId() {
@@ -131,5 +137,13 @@ public class MovieEntity {
 
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
+  }
+
+  public AdvisoryRatingEnum getAdvisoryRating() {
+    return advisoryRating;
+  }
+
+  public void setAdvisoryRating(AdvisoryRatingEnum advisoryRating) {
+    this.advisoryRating = advisoryRating;
   }
 }

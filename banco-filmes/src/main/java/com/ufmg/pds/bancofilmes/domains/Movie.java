@@ -9,6 +9,7 @@ public class Movie {
   private GenreEnum genre;
   private WhereToWatchEnum whereToWatch;
   private String imageUrl;
+  private AdvisoryRatingEnum advisoryRating;
 
   public Movie() {}
 
@@ -20,7 +21,8 @@ public class Movie {
       String synopsis,
       GenreEnum genre,
       WhereToWatchEnum whereToWatch,
-      String imageUrl) {
+      String imageUrl,
+      AdvisoryRatingEnum advisoryRating) {
     this.id = id;
     this.title = title;
     this.director = director;
@@ -29,12 +31,7 @@ public class Movie {
     this.genre = genre;
     this.whereToWatch = whereToWatch;
     this.imageUrl = imageUrl;
-  }
-
-  public Movie(String title, String director, Double score) {
-    this.title = title;
-    this.director = director;
-    this.score = score;
+    this.advisoryRating = advisoryRating;
   }
 
   public Long getId() {
@@ -99,5 +96,13 @@ public class Movie {
 
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
+  }
+
+  public AdvisoryRatingEnum getAdvisoryRating() {
+    return advisoryRating;
+  }
+
+  public void setAdvisoryRating(AdvisoryRatingEnum advisoryRating) {
+    this.advisoryRating = advisoryRating;
   }
 }
