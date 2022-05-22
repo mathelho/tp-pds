@@ -10,24 +10,29 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 
 @Converter
-public class WhereToWatchEnumConverter implements AttributeConverter<List<WhereToWatchEnum>, String> {
+public class WhereToWatchEnumConverter
+    implements AttributeConverter<List<WhereToWatchEnum>, String> {
 
   @Override
   public String convertToDatabaseColumn(List<WhereToWatchEnum> whereToWatchEnumList) {
-    return ObjectUtils.isEmpty(whereToWatchEnumList) ? null : String.join(", ", whereToWatchEnumList.toString());
+    return ObjectUtils.isEmpty(whereToWatchEnumList)
+        ? null
+        : String.join(", ", whereToWatchEnumList.toString());
   }
 
   @Override
-  public List<WhereToWatchEnum> convertToEntityAttribute(String whereToWatchEnum) {
-    if (StringUtils.isEmpty(whereToWatchEnum)) {
+  public List<WhereToWatchEnum> convertToEntityAttribute(String savedWhereToWatch) {
+    if (StringUtils.isEmpty(savedWhereToWatch)) {
       return null;
-    }else{
+    } else {
       List<WhereToWatchEnum> whereToWatchEnumList = new ArrayList<>();
-      List<String> whereToWatchStringList = Arrays.asList(whereToWatchEnum.replaceAll("[\\[\\](){}]","").split(", "));
-      whereToWatchStringList.forEach(whereToWatchString -> {
-        WhereToWatchEnum whereToWatch = WhereToWatchEnum.valueOf(whereToWatchString);
-        whereToWatchEnumList.add(whereToWatch);
-      });
+      List<String> whereToWatchStringList =
+          Arrays.asList(savedWhereToWatch.replaceAll("[\\[\\](){}]", "").split(", "));
+      whereToWatchStringList.forEach(
+          whereToWatchString -> {
+            WhereToWatchEnum whereToWatch = WhereToWatchEnum.valueOf(whereToWatchString);
+            whereToWatchEnumList.add(whereToWatch);
+          });
       return whereToWatchEnumList;
     }
   }
