@@ -3,14 +3,16 @@ package com.ufmg.pds.bancofilmes.domains.dtos;
 import com.ufmg.pds.bancofilmes.domains.AdvisoryRatingEnum;
 import com.ufmg.pds.bancofilmes.domains.GenreEnum;
 import com.ufmg.pds.bancofilmes.domains.WhereToWatchEnum;
+import java.util.List;
 
 public class MoviePostRequestBodyDTO {
   private String title;
   private String director;
   private Double score;
   private String synopsis;
+//  private List<GenreEnum> genre;
   private GenreEnum genre;
-  private WhereToWatchEnum whereToWatch;
+  private List<WhereToWatchEnum> whereToWatch;
   private String imageUrl;
   private AdvisoryRatingEnum advisoryRating;
 
@@ -21,8 +23,9 @@ public class MoviePostRequestBodyDTO {
       String director,
       Double score,
       String synopsis,
+//      List<GenreEnum> genre,
       GenreEnum genre,
-      WhereToWatchEnum whereToWatch,
+      List<WhereToWatchEnum> whereToWatch,
       String imageUrl,
       AdvisoryRatingEnum advisoryRating) {
     this.title = title;
@@ -75,11 +78,12 @@ public class MoviePostRequestBodyDTO {
     this.genre = genre;
   }
 
-  public WhereToWatchEnum getWhereToWatch() {
+  public List<WhereToWatchEnum> getWhereToWatch() {
     return whereToWatch;
   }
 
-  public void setWhereToWatch(WhereToWatchEnum whereToWatch) {
+  public void setWhereToWatch(
+      List<WhereToWatchEnum> whereToWatch) {
     this.whereToWatch = whereToWatch;
   }
 

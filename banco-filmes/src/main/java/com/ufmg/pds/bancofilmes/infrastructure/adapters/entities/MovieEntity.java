@@ -3,11 +3,17 @@ package com.ufmg.pds.bancofilmes.infrastructure.adapters.entities;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ufmg.pds.bancofilmes.domains.AdvisoryRatingEnum;
 import com.ufmg.pds.bancofilmes.domains.GenreEnum;
+import com.ufmg.pds.bancofilmes.domains.Movie;
 import com.ufmg.pds.bancofilmes.domains.WhereToWatchEnum;
+import com.ufmg.pds.bancofilmes.infrastructure.adapters.entities.converters.WhereToWatchEnumConverter;
+import java.util.List;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -43,7 +49,8 @@ public class MovieEntity {
 
   @JsonProperty("whereToWatch")
   @NotNull(message = "Needs have at least one streaming option")
-  private WhereToWatchEnum whereToWatch;
+  @Convert(converter = WhereToWatchEnumConverter.class)
+  private List<WhereToWatchEnum> whereToWatch;
 
   @JsonProperty("imageUrl")
   @NotEmpty
@@ -60,8 +67,9 @@ public class MovieEntity {
       String director,
       Double score,
       String synopsis,
+//      List<GenreEnum> genre,
       GenreEnum genre,
-      WhereToWatchEnum whereToWatch,
+      List<WhereToWatchEnum> whereToWatch,
       String imageUrl,
       AdvisoryRatingEnum advisoryRating) {
     this.id = id;
@@ -123,11 +131,12 @@ public class MovieEntity {
     this.genre = genre;
   }
 
-  public WhereToWatchEnum getWhereToWatch() {
+  public List<WhereToWatchEnum> getWhereToWatch() {
     return whereToWatch;
   }
 
-  public void setWhereToWatch(WhereToWatchEnum whereToWatch) {
+  public void setWhereToWatch(
+      List<WhereToWatchEnum> whereToWatch) {
     this.whereToWatch = whereToWatch;
   }
 

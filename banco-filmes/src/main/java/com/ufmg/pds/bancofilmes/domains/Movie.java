@@ -1,13 +1,16 @@
 package com.ufmg.pds.bancofilmes.domains;
 
+import java.util.List;
+
 public class Movie {
   private Long id;
   private String title;
   private String director;
   private Double score;
   private String synopsis;
+//  private List<GenreEnum> genre;
   private GenreEnum genre;
-  private WhereToWatchEnum whereToWatch;
+  private List<WhereToWatchEnum> whereToWatch;
   private String imageUrl;
   private AdvisoryRatingEnum advisoryRating;
 
@@ -19,8 +22,9 @@ public class Movie {
       String director,
       Double score,
       String synopsis,
+//      List<GenreEnum> genre,
       GenreEnum genre,
-      WhereToWatchEnum whereToWatch,
+      List<WhereToWatchEnum> whereToWatch,
       String imageUrl,
       AdvisoryRatingEnum advisoryRating) {
     this.id = id;
@@ -82,11 +86,12 @@ public class Movie {
     this.genre = genre;
   }
 
-  public WhereToWatchEnum getWhereToWatch() {
+  public List<WhereToWatchEnum> getWhereToWatch() {
     return whereToWatch;
   }
 
-  public void setWhereToWatch(WhereToWatchEnum whereToWatch) {
+  public void setWhereToWatch(
+      List<WhereToWatchEnum> whereToWatch) {
     this.whereToWatch = whereToWatch;
   }
 
