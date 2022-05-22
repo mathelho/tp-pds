@@ -1,5 +1,6 @@
 package com.ufmg.pds.bancofilmes.domains.dtos;
 
+import com.ufmg.pds.bancofilmes.domains.AdvisoryRatingEnum;
 import com.ufmg.pds.bancofilmes.domains.GenreEnum;
 import com.ufmg.pds.bancofilmes.domains.WhereToWatchEnum;
 
@@ -12,25 +13,9 @@ public class MovieDTO {
   private GenreEnum genre;
   private WhereToWatchEnum whereToWatch;
   private String imageUrl;
+  private AdvisoryRatingEnum advisoryRating;
 
   public MovieDTO() {}
-
-  public MovieDTO(
-      String title,
-      String director,
-      Double score,
-      String synopsis,
-      GenreEnum genre,
-      WhereToWatchEnum whereToWatch,
-      String imageUrl) {
-    this.title = title;
-    this.director = director;
-    this.score = score;
-    this.synopsis = synopsis;
-    this.genre = genre;
-    this.whereToWatch = whereToWatch;
-    this.imageUrl = imageUrl;
-  }
 
   public MovieDTO(
       Long id,
@@ -40,7 +25,8 @@ public class MovieDTO {
       String synopsis,
       GenreEnum genre,
       WhereToWatchEnum whereToWatch,
-      String imageUrl) {
+      String imageUrl,
+      AdvisoryRatingEnum advisoryRating) {
     this.id = id;
     this.title = title;
     this.director = director;
@@ -49,6 +35,7 @@ public class MovieDTO {
     this.genre = genre;
     this.whereToWatch = whereToWatch;
     this.imageUrl = imageUrl;
+    this.advisoryRating = advisoryRating;
   }
 
   public Long getId() {
@@ -113,5 +100,13 @@ public class MovieDTO {
 
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
+  }
+
+  public AdvisoryRatingEnum getAdvisoryRating() {
+    return advisoryRating;
+  }
+
+  public void setAdvisoryRating(AdvisoryRatingEnum advisoryRating) {
+    this.advisoryRating = advisoryRating;
   }
 }
