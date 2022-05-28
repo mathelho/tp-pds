@@ -26,36 +26,9 @@
 			"response": []
 		},
 		{
-			"name": "save",
+			"name": "findById",
 			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"director\": \"Christopher Nolan\",\r\n    \"genre\": \"ADVENTURE\",\r\n    \"imageUrl\": \"www.bancodefilmes.com.br\",\r\n    \"score\": 9.2,\r\n    \"synopsis\": \"A crazy man dressed as a bat kick bandits asses\",\r\n    \"title\": \"Batman The Dark Knight\",\r\n    \"whereToWatch\": \"NETFLIX\",\r\n    \"advisoryRating\": \"DEZ\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8080/movies",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"movies"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "delete",
-			"request": {
-				"method": "DELETE",
+				"method": "GET",
 				"header": [],
 				"url": {
 					"raw": "localhost:8080/movies/1",
@@ -66,33 +39,6 @@
 					"path": [
 						"movies",
 						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "replace",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\": 1,\r\n    \"director\": \"Christopher Nolan\",\r\n    \"genre\": \"ADVENTURE\",\r\n    \"imageUrl\": \"www.bancodefilmes.com.br\",\r\n    \"score\": 9.5,\r\n    \"synopsis\": \"A crazy man dressed as a bat kick bandits asses\",\r\n    \"title\": \"Batman The Dark Knight\",\r\n    \"whereToWatch\": \"NETFLIX\",\r\n    \"advisoryRating\": \"DOZE\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8080/movies",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"movies"
 					]
 				}
 			},
@@ -137,6 +83,79 @@
 					"path": [
 						"movies",
 						"top"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"director\": \"Christopher Nolan\",\r\n    \"genres\": [\r\n        \"ACTION\",\r\n        \"ADVENTURE\"\r\n    ],\r\n    \"imageUrl\": \"www.bancodefilmes.com.br\",\r\n    \"score\": 9.2,\r\n    \"synopsis\": \"A crazy man dressed as a bat kick bandits asses\",\r\n    \"title\": \"Batman The Dark Knight\",\r\n    \"whereToWatch\": [\r\n        \"AMAZON_PRIME_VIDEO\",\r\n        \"HBO_MAX\",\r\n        \"NETFLIX\"\r\n    ],\r\n    \"advisoryRating\": \"DOZE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/movies",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "replace",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"director\": \"Christopher Nolan\",\r\n    \"genres\": [\r\n        \"ACTION\",\r\n        \"ADVENTURE\"\r\n    ],\r\n    \"imageUrl\": \"www.bancodefilmes.com.br\",\r\n    \"score\": 9.5,\r\n    \"synopsis\": \"A crazy man dressed as a bat kick bandits asses\",\r\n    \"title\": \"Batman The Dark Knight\",\r\n    \"whereToWatch\": [\r\n        \"HBO_MAX\",\r\n        \"NETFLIX\"\r\n    ],\r\n    \"advisoryRating\": \"QUATORZE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/movies",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/movies/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"1"
 					]
 				}
 			},

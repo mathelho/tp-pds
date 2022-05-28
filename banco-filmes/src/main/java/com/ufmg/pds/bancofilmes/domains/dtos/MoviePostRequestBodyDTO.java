@@ -3,14 +3,15 @@ package com.ufmg.pds.bancofilmes.domains.dtos;
 import com.ufmg.pds.bancofilmes.domains.AdvisoryRatingEnum;
 import com.ufmg.pds.bancofilmes.domains.GenreEnum;
 import com.ufmg.pds.bancofilmes.domains.WhereToWatchEnum;
+import java.util.List;
 
 public class MoviePostRequestBodyDTO {
   private String title;
   private String director;
   private Double score;
   private String synopsis;
-  private GenreEnum genre;
-  private WhereToWatchEnum whereToWatch;
+  private List<GenreEnum> genres;
+  private List<WhereToWatchEnum> whereToWatch;
   private String imageUrl;
   private AdvisoryRatingEnum advisoryRating;
 
@@ -21,15 +22,15 @@ public class MoviePostRequestBodyDTO {
       String director,
       Double score,
       String synopsis,
-      GenreEnum genre,
-      WhereToWatchEnum whereToWatch,
+      List<GenreEnum> genres,
+      List<WhereToWatchEnum> whereToWatch,
       String imageUrl,
       AdvisoryRatingEnum advisoryRating) {
     this.title = title;
     this.director = director;
     this.score = score;
     this.synopsis = synopsis;
-    this.genre = genre;
+    this.genres = genres;
     this.whereToWatch = whereToWatch;
     this.imageUrl = imageUrl;
     this.advisoryRating = advisoryRating;
@@ -67,19 +68,19 @@ public class MoviePostRequestBodyDTO {
     this.synopsis = synopsis;
   }
 
-  public GenreEnum getGenre() {
-    return genre;
+  public List<GenreEnum> getGenres() {
+    return genres;
   }
 
-  public void setGenre(GenreEnum genre) {
-    this.genre = genre;
+  public void setGenres(List<GenreEnum> genres) {
+    this.genres = genres;
   }
 
-  public WhereToWatchEnum getWhereToWatch() {
+  public List<WhereToWatchEnum> getWhereToWatch() {
     return whereToWatch;
   }
 
-  public void setWhereToWatch(WhereToWatchEnum whereToWatch) {
+  public void setWhereToWatch(List<WhereToWatchEnum> whereToWatch) {
     this.whereToWatch = whereToWatch;
   }
 
