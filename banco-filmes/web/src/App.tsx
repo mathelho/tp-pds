@@ -4,11 +4,12 @@ import { MovieList } from "./components/MovieList";
 
 export function App() {
   const [isHomeOpen, setIsHomeOpen] = useState(true);
+  const [isRankingOpen, setIsRankingOpen] =  useState(false);
 
   return (
     <>
-      <Header setIsHomeOpen={setIsHomeOpen} />
-      <MovieList onHomeOpen={isHomeOpen} setIsHomeOpen={setIsHomeOpen} />
+      <Header setIsHomeOpen={setIsHomeOpen} setIsRankingOpen={setIsRankingOpen} />
+      <MovieList onHomeOpen={isHomeOpen} onRankingOpen={isRankingOpen} setIsHomeOpen={setIsHomeOpen} setIsRankingOpen={setIsRankingOpen} />
     </>
   );
 }

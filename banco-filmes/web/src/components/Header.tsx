@@ -2,10 +2,11 @@ import logoImg from '../assets/logo.svg'
 import rankingImg from '../assets/ranking.svg'
 
 interface HeaderProps {
-    setIsHomeOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsHomeOpen: React.Dispatch<React.SetStateAction<boolean>>,
+    setIsRankingOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export function Header({ setIsHomeOpen }: HeaderProps) {
+export function Header({ setIsHomeOpen, setIsRankingOpen }: HeaderProps) {
     return (
         <header className="bg-[#CA7613] w-full h-16">
 
@@ -14,7 +15,7 @@ export function Header({ setIsHomeOpen }: HeaderProps) {
             </button>
 
             <button className='absolute top-3 right-12' type='button'>
-                <img src={rankingImg} alt="Botão para acessar ranking de filmes" />
+                <img onClick={() => setIsRankingOpen(true)} src={rankingImg} alt="Botão para acessar ranking de filmes" />
             </button>
 
         </header>

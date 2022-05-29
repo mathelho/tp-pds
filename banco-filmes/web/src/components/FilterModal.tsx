@@ -1,11 +1,11 @@
 import { Popover } from "@headlessui/react";
 import { FormEvent, useState } from "react";
 import { CloseButton } from "./CloseButton";
-import { BancoDeFilmes } from "./MovieList";
+import { Movie } from "./MovieList";
 
 interface FilterModalProps {
-    movieList: BancoDeFilmes[];
-    setMovieList: React.Dispatch<React.SetStateAction<BancoDeFilmes[]>>;
+    movieList: Movie[];
+    setMovieList: React.Dispatch<React.SetStateAction<Movie[]>>;
     setIsHomeOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 

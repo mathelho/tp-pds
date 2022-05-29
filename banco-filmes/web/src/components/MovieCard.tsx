@@ -1,8 +1,8 @@
-import { BancoDeFilmes } from "./MovieList";
+import { Movie } from "./MovieList";
 
 interface MovieCardProps {
-    movie: BancoDeFilmes,
-    setMovieChosen: React.Dispatch<React.SetStateAction<BancoDeFilmes | null>>
+    movie: Movie,
+    setMovieChosen: React.Dispatch<React.SetStateAction<Movie | null>>
 }
 
 export function MovieCard({ movie, setMovieChosen }: MovieCardProps) {

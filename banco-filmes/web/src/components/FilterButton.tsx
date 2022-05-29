@@ -1,11 +1,11 @@
 import { Popover } from '@headlessui/react';
 import filterImg from '../assets/filter.svg'
 import { FilterModal } from './FilterModal';
-import { BancoDeFilmes } from './MovieList';
+import { Movie } from './MovieList';
 
 interface FilterButtonProps {
-    movieList: BancoDeFilmes[];
-    setMovieList: React.Dispatch<React.SetStateAction<BancoDeFilmes[]>>;
+    movieList: Movie[];
+    setMovieList: React.Dispatch<React.SetStateAction<Movie[]>>;
     setIsHomeOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 

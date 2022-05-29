@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { FilterButton } from "./FilterButton";
 import { MovieCard } from "./MovieCard";
 import { MovieInfo } from "./MovieInfo";
+import { MovieRanking } from "./MovieRanking";
 
-export interface BancoDeFilmes {
+export interface Movie {
     id: number,
     title: string,
     director: string,
@@ -16,18 +17,22 @@ export interface BancoDeFilmes {
 
 interface MovieListProps {
     onHomeOpen: boolean,
-    setIsHomeOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    onRankingOpen: boolean,
+    setIsHomeOpen: React.Dispatch<React.SetStateAction<boolean>>,
+    setIsRankingOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export function MovieList({ onHomeOpen, setIsHomeOpen }: MovieListProps) {
-    const [movieList, setMovieList] = useState<BancoDeFilmes[]>([]);
-    const [movieChosen, setMovieChosen] = useState<BancoDeFilmes | null>(null);
+export function MovieList({ onHomeOpen, onRankingOpen, setIsHomeOpen, setIsRankingOpen }: MovieListProps) {
+    const [movieList, setMovieList] = useState<Movie[]>([]);
+    const [movieChosen, setMovieChosen] = useState<Movie | null>(null);
 
     useEffect(() => {
         if (onHomeOpen) {
             fetch('http://localhost:8080/movies')
             .then(response => response.json())
             .then(data => setMovieList(data))
+
+            setIsRankingOpen(false);
         }
     }, [onHomeOpen])
 
@@ -36,6 +41,12 @@ export function MovieList({ onHomeOpen, setIsHomeOpen }: MovieListProps) {
             setIsHomeOpen(false);
         }
     }, [movieChosen])
+
+    useEffect(() => {
+        if (onRankingOpen) {
+            setIsHomeOpen(false);
+        }
+    }, [onRankingOpen])
 
     return (
         <>
@@ -53,7 +64,13 @@ export function MovieList({ onHomeOpen, setIsHomeOpen }: MovieListProps) {
                     </section>
                 </>
             ) : (
-                <MovieInfo movieChosen={movieChosen} />
+                <>
+                    {onRankingOpen ? (
+                        <MovieRanking />
+                    ) : (
+                        <MovieInfo movieChosen={movieChosen} />
+                    )}
+                </>
             )}
         </>
         

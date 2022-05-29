@@ -1,7 +1,7 @@
-import { BancoDeFilmes } from "./MovieList";
+import { Movie } from "./MovieList";
 
 interface MovieInfoProps {
-    movieChosen: BancoDeFilmes | null,
+    movieChosen: Movie | null,
 }
 
 export function MovieInfo({ movieChosen }: MovieInfoProps) {
