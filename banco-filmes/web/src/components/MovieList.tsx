@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { FilterButton } from "./FilterButton";
 import { MovieCard } from "./MovieCard";
+import { MovieInfo } from "./MovieInfo";
+import { MovieRanking } from "./MovieRanking";
 
-interface BancoDeFilmes {
+export interface Movie {
     id: number,
     title: string,
     director: string,
@@ -13,28 +15,64 @@ interface BancoDeFilmes {
     imageUrl: string
 }
 
-export function MovieList() {
-    const [movieList, setMovieList] = useState<BancoDeFilmes[]>([]);
+interface MovieListProps {
+    onHomeOpen: boolean,
+    onRankingOpen: boolean,
+    setIsHomeOpen: React.Dispatch<React.SetStateAction<boolean>>,
+    setIsRankingOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export function MovieList({ onHomeOpen, onRankingOpen, setIsHomeOpen, setIsRankingOpen }: MovieListProps) {
+    const [movieList, setMovieList] = useState<Movie[]>([]);
+    const [movieChosen, setMovieChosen] = useState<Movie | null>(null);
 
     useEffect(() => {
-        fetch('http://localhost:8080/movies')
-        .then(response => response.json())
-        .then(data => setMovieList(data))
-    }, [])
+        if (onHomeOpen) {
+            fetch('http://localhost:8080/movies')
+            .then(response => response.json())
+            .then(data => setMovieList(data))
+
+            setIsRankingOpen(false);
+        }
+    }, [onHomeOpen])
+
+    useEffect(() => {
+        if (movieChosen) {
+            setIsHomeOpen(false);
+        }
+    }, [movieChosen])
+
+    useEffect(() => {
+        if (onRankingOpen) {
+            setIsHomeOpen(false);
+        }
+    }, [onRankingOpen])
 
     return (
         <>
-            <FilterButton />
+            {onHomeOpen ? (
+                <>
+                    <FilterButton movieList={movieList} setMovieList={setMovieList} setIsHomeOpen={setIsHomeOpen} />
 
-            <section className="mx-auto my-0 px-10">
+                    <section className="mx-auto my-0 px-10">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-y-3">
+                            {movieList.map(movie => {
+                                return <MovieCard key={movie.id} movie={movie} setMovieChosen={setMovieChosen} />
+                            })}
+                        </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-y-3">
-                    {movieList.map(movie => {
-                        console.log(movie);
-                        return <MovieCard key={movie.id} title={movie.title} score={movie.score} />
-                    })}
-                </div>
-            </section>
+                    </section>
+                </>
+            ) : (
+                <>
+                    {onRankingOpen ? (
+                        <MovieRanking />
+                    ) : (
+                        <MovieInfo movieChosen={movieChosen} />
+                    )}
+                </>
+            )}
         </>
+        
     );
 }
