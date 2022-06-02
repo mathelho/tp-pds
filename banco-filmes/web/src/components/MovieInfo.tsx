@@ -25,10 +25,10 @@ export function MovieInfo({ movieChosen }: MovieInfoProps) {
                 <img 
                     src={movieChosen?.imageUrl} 
                     alt="Poster do filme"
-                    className="w-[20%]"
+                    className="w-[20%] rounded-2xl"
                 />
 
-                <div className="mx-8">
+                <div className="mx-8 w-[480px]">
                     {movieChosen?.title}
 
                     <p className="mt-10">
