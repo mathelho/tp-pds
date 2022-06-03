@@ -23,7 +23,7 @@ export function FilterModal({ movieList, setMovieList, setIsHomeOpen }: FilterMo
     }
 
     return (
-        <div className="bg-black absolute left-0 right-0 mx-auto text-white w-[70%] mt-16 p-10 rounded-3xl opacity-95">
+        <div className="flex flex-col flex-wrap bg-black absolute left-0 right-0 mx-auto text-white w-[70%] mt-16 p-10 rounded-3xl opacity-95">
             <h1 className="text-[32px] mb-3">Filtro</h1>
             <CloseButton />
 
@@ -36,19 +36,31 @@ export function FilterModal({ movieList, setMovieList, setIsHomeOpen }: FilterMo
             >    
             </input>
 
-            <h2 className="text-xl my-3">Gênero</h2>
-            <select 
-                className="w-[50%] h-8 rounded-md bg-transparent border-2 border-[#CA7613]" 
-                name="genre" 
-                id="genre"
-                onChange={event => setGenreQuery(event.target.value)}
-            >
-                    <option className="text-black" defaultValue={''}>Selecione um gênero...</option>
-                    <option className="text-black" value="acao">Ação</option>
-                    <option className="text-black" value="comedia">Comédia</option>
-            </select>
+            <div className="flex flex-col">
+                <h2 className="text-xl my-3">Gênero</h2>
+                <select 
+                    className="w-[50%] h-8 rounded-md bg-transparent border-2 border-[#CA7613]" 
+                    name="genre" 
+                    id="genre"
+                    onChange={event => setGenreQuery(event.target.value)}
+                >
+                        <option className="text-black" defaultValue={''}>Selecione um gênero...</option>
+                        <option className="text-black" value="ACTION">Ação</option>
+                        <option className="text-black" value="ADVENTURE">Aventura</option>
+                        <option className="text-black" value="COMEDY">Comédia</option>
+                        <option className="text-black" value="DRAMA">Drama</option>
+                        <option className="text-black" value="FANTASY">Fantasia</option>
+                        <option className="text-black" value="HORROR">Horror</option>
+                        <option className="text-black" value="HISTORICAL">Histórico</option>
+                        <option className="text-black" value="MYSTERY">Mistério</option>
+                        <option className="text-black" value="ROMANCE">Romance</option>
+                        <option className="text-black" value="SCIENCE_FICTION">Ficção Científica</option>
+                        <option className="text-black" value="THRILLER">Thriller</option>
+                </select>
 
-            <span>Buscar por nota do IMDB</span>
+                <span>Buscar por nota do IMDB</span>
+
+            </div>
 
             <Popover.Button onClick={handleFilter} className='absolute right-6 bottom-6'>
                 Buscar
