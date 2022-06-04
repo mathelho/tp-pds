@@ -7,11 +7,14 @@ public class Movie {
   private String title;
   private String director;
   private Double score;
+  private Double imdbScore;
   private String synopsis;
   private List<GenreEnum> genres;
   private List<WhereToWatchEnum> whereToWatch;
   private String imageUrl;
   private AdvisoryRatingEnum advisoryRating;
+  private String releaseYear;
+  private Integer numberOfReviews;
 
   public Movie() {}
 
@@ -20,20 +23,26 @@ public class Movie {
       String title,
       String director,
       Double score,
+      Double imdbScore,
       String synopsis,
       List<GenreEnum> genres,
       List<WhereToWatchEnum> whereToWatch,
       String imageUrl,
-      AdvisoryRatingEnum advisoryRating) {
+      AdvisoryRatingEnum advisoryRating,
+      String releaseYear,
+      Integer numberOfReviews) {
     this.id = id;
     this.title = title;
     this.director = director;
     this.score = score;
+    this.imdbScore = imdbScore;
     this.synopsis = synopsis;
     this.genres = genres;
     this.whereToWatch = whereToWatch;
     this.imageUrl = imageUrl;
     this.advisoryRating = advisoryRating;
+    this.releaseYear = releaseYear;
+    this.numberOfReviews = numberOfReviews;
   }
 
   public Long getId() {
@@ -62,6 +71,14 @@ public class Movie {
 
   public Double getScore() {
     return score;
+  }
+
+  public Double getImdbScore() {
+    return imdbScore;
+  }
+
+  public void setImdbScore(Double imdbScore) {
+    this.imdbScore = imdbScore;
   }
 
   public void setScore(Double score) {
@@ -106,5 +123,21 @@ public class Movie {
 
   public void setAdvisoryRating(AdvisoryRatingEnum advisoryRating) {
     this.advisoryRating = advisoryRating;
+  }
+
+  public String getReleaseYear() {
+    return releaseYear;
+  }
+
+  public void setReleaseYear(String releaseYear) {
+    this.releaseYear = releaseYear;
+  }
+
+  public Integer getNumberOfReviews() {
+    return numberOfReviews;
+  }
+
+  public void setNumberOfReviews(Integer numberOfReviews) {
+    this.numberOfReviews = numberOfReviews;
   }
 }

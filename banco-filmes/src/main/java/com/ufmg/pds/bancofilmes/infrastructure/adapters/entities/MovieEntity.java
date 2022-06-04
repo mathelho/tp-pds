@@ -24,39 +24,52 @@ public class MovieEntity {
   private Long id;
 
   @JsonProperty("title")
-  @NotEmpty
+  @NotEmpty(message = "The movie title should not be empty")
   private String title;
 
   @JsonProperty("director")
-  @NotEmpty(message = "The director should not be empty")
+  @NotEmpty(message = "The movie director should not be empty")
   private String director;
 
   @JsonProperty("score")
-  @NotNull(message = "The Score should not be null")
-  @Min(value = 1, message = "The score must not be lower than 1")
-  @Max(value = 10, message = "The score must not be higher than 10")
   private Double score;
 
+  @JsonProperty("imdbScore")
+  @NotNull(message = "Movie IMDb score should not be null")
+  @Min(value = 1, message = "Movie IMDb score must not be lower than 1")
+  @Max(value = 10, message = "Movie IMDb score must not be higher than 10")
+  private Double imdbScore;
+
   @JsonProperty("synopsis")
-  @NotEmpty
+  @NotEmpty(message = "Movie synopsis should not be empty")
   private String synopsis;
 
   @JsonProperty("genres")
-  @NotNull(message = "Movies need to have a genre")
+  @NotNull(message = "Movie genres should not be null")
   @Convert(converter = GenreEnumConverter.class)
   private List<GenreEnum> genres;
 
   @JsonProperty("whereToWatch")
-  @NotNull(message = "Needs have at least one streaming option")
+  @NotNull(message = "Movie where to watch should not be null")
   @Convert(converter = WhereToWatchEnumConverter.class)
   private List<WhereToWatchEnum> whereToWatch;
 
   @JsonProperty("imageUrl")
-  @NotEmpty
+  @NotEmpty(message = "Movie image url should not be empty")
   private String imageUrl;
 
   @JsonProperty("advisoryRating")
+  @NotNull(message = "Movie advisory rating should not be null")
   private AdvisoryRatingEnum advisoryRating;
+
+  @JsonProperty("releaseYear")
+  @NotNull(message = "Movie release year should not be null")
+  @Min(value = 1895, message = "Movie release year must not be lower than 1895")
+  @Max(value = 2035, message = "Movie release year must not be greater than 2035")
+  private String releaseYear;
+
+  @JsonProperty("numberOfReviews")
+  private Integer numberOfReviews = 0;
 
   public MovieEntity() {}
 
@@ -65,20 +78,26 @@ public class MovieEntity {
       String title,
       String director,
       Double score,
+      Double imdbScore,
       String synopsis,
       List<GenreEnum> genres,
       List<WhereToWatchEnum> whereToWatch,
       String imageUrl,
-      AdvisoryRatingEnum advisoryRating) {
+      AdvisoryRatingEnum advisoryRating,
+      String releaseYear,
+      Integer numberOfReviews) {
     this.id = id;
     this.title = title;
     this.director = director;
     this.score = score;
+    this.imdbScore = imdbScore;
     this.synopsis = synopsis;
     this.genres = genres;
     this.whereToWatch = whereToWatch;
     this.imageUrl = imageUrl;
     this.advisoryRating = advisoryRating;
+    this.releaseYear = releaseYear;
+    this.numberOfReviews = numberOfReviews;
   }
 
   public Long getId() {
@@ -111,6 +130,14 @@ public class MovieEntity {
 
   public void setScore(Double score) {
     this.score = score;
+  }
+
+  public Double getImdbScore() {
+    return imdbScore;
+  }
+
+  public void setImdbScore(Double imdbScore) {
+    this.imdbScore = imdbScore;
   }
 
   public String getSynopsis() {
@@ -151,5 +178,21 @@ public class MovieEntity {
 
   public void setAdvisoryRating(AdvisoryRatingEnum advisoryRating) {
     this.advisoryRating = advisoryRating;
+  }
+
+  public String getReleaseYear() {
+    return releaseYear;
+  }
+
+  public void setReleaseYear(String releaseYear) {
+    this.releaseYear = releaseYear;
+  }
+
+  public Integer getNumberOfReviews() {
+    return numberOfReviews;
+  }
+
+  public void setNumberOfReviews(Integer numberOfReviews) {
+    this.numberOfReviews = numberOfReviews;
   }
 }

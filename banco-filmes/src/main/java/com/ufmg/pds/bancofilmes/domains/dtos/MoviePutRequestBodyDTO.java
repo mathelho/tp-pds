@@ -9,12 +9,13 @@ public class MoviePutRequestBodyDTO {
   private Long id;
   private String title;
   private String director;
-  private Double score;
+  private Double imdbScore;
   private String synopsis;
   private List<GenreEnum> genres;
   private List<WhereToWatchEnum> whereToWatch;
   private String imageUrl;
   private AdvisoryRatingEnum advisoryRating;
+  private String releaseYear;
 
   public MoviePutRequestBodyDTO() {}
 
@@ -22,21 +23,23 @@ public class MoviePutRequestBodyDTO {
       Long id,
       String title,
       String director,
-      Double score,
+      Double imdbScore,
       String synopsis,
       List<GenreEnum> genres,
       List<WhereToWatchEnum> whereToWatch,
       String imageUrl,
-      AdvisoryRatingEnum advisoryRating) {
+      AdvisoryRatingEnum advisoryRating,
+      String releaseYear) {
     this.id = id;
     this.title = title;
     this.director = director;
-    this.score = score;
+    this.imdbScore = imdbScore;
     this.synopsis = synopsis;
     this.genres = genres;
     this.whereToWatch = whereToWatch;
     this.imageUrl = imageUrl;
     this.advisoryRating = advisoryRating;
+    this.releaseYear = releaseYear;
   }
 
   public Long getId() {
@@ -63,12 +66,12 @@ public class MoviePutRequestBodyDTO {
     this.director = director;
   }
 
-  public Double getScore() {
-    return score;
+  public Double getImdbScore() {
+    return imdbScore;
   }
 
-  public void setScore(Double score) {
-    this.score = score;
+  public void setImdbScore(Double imdbScore) {
+    this.imdbScore = imdbScore;
   }
 
   public String getSynopsis() {
@@ -109,5 +112,13 @@ public class MoviePutRequestBodyDTO {
 
   public void setAdvisoryRating(AdvisoryRatingEnum advisoryRating) {
     this.advisoryRating = advisoryRating;
+  }
+
+  public String getReleaseYear() {
+    return releaseYear;
+  }
+
+  public void setReleaseYear(String releaseYear) {
+    this.releaseYear = releaseYear;
   }
 }

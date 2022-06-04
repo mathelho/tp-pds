@@ -8,6 +8,7 @@ import com.ufmg.pds.bancofilmes.domains.ports.interfaces.MovieServicePort;
 import com.ufmg.pds.bancofilmes.domains.ports.repositories.MovieRepositoryPort;
 import com.ufmg.pds.bancofilmes.exceptions.NotFoundException;
 import java.util.List;
+import javax.transaction.Transactional;
 
 public class MovieService implements MovieServicePort {
   private final MovieRepositoryPort movieRepositoryPort;
@@ -36,8 +37,12 @@ public class MovieService implements MovieServicePort {
   }
 
   @Override
+  @Transactional
   public Movie save(MoviePostRequestBodyDTO movie) {
-    return movieRepositoryPort.save(MovieMapper.INSTANCE.toMovie(movie));
+    Movie movieToBeSaved = MovieMapper.INSTANCE.toMovie(movie);
+    movieToBeSaved.setNumberOfReviews(0);
+    movieToBeSaved.setScore(0.0);
+    return movieRepositoryPort.save(movieToBeSaved);
   }
 
   @Override
@@ -51,6 +56,8 @@ public class MovieService implements MovieServicePort {
 
     Movie movieToBeSaved = MovieMapper.INSTANCE.toMovie(movie);
     movieToBeSaved.setId(savedMovie.getId());
+    movieToBeSaved.setNumberOfReviews(savedMovie.getNumberOfReviews());
+    movieToBeSaved.setScore(savedMovie.getScore());
 
     movieRepositoryPort.save(movieToBeSaved);
   }
