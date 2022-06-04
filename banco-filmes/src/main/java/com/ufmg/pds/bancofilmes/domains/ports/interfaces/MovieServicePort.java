@@ -3,6 +3,7 @@ package com.ufmg.pds.bancofilmes.domains.ports.interfaces;
 import com.ufmg.pds.bancofilmes.domains.Movie;
 import com.ufmg.pds.bancofilmes.domains.dtos.MoviePostRequestBodyDTO;
 import com.ufmg.pds.bancofilmes.domains.dtos.MoviePutRequestBodyDTO;
+import com.ufmg.pds.bancofilmes.domains.dtos.RateMoviePostRequestBodyDTO;
 import java.util.List;
 
 public interface MovieServicePort {
@@ -14,6 +15,8 @@ public interface MovieServicePort {
 
   // @Transactional
   Movie save(MoviePostRequestBodyDTO movie);
+
+  Movie rate(RateMoviePostRequestBodyDTO rate);
 
   void delete(Long id);
 

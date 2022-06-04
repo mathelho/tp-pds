@@ -3,6 +3,7 @@ package com.ufmg.pds.bancofilmes.adapters.controllers;
 import com.ufmg.pds.bancofilmes.domains.Movie;
 import com.ufmg.pds.bancofilmes.domains.dtos.MoviePostRequestBodyDTO;
 import com.ufmg.pds.bancofilmes.domains.dtos.MoviePutRequestBodyDTO;
+import com.ufmg.pds.bancofilmes.domains.dtos.RateMoviePostRequestBodyDTO;
 import com.ufmg.pds.bancofilmes.domains.ports.interfaces.MovieServicePort;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -52,6 +53,11 @@ public class MovieController {
   @PostMapping
   public ResponseEntity<Movie> save(@RequestBody MoviePostRequestBodyDTO movie) {
     return new ResponseEntity<>(movieService.save(movie), HttpStatus.CREATED);
+  }
+
+  @PostMapping(path = "/rate")
+  public ResponseEntity<Movie> rate(@RequestBody RateMoviePostRequestBodyDTO score) {
+    return new ResponseEntity<>(movieService.rate(score), HttpStatus.OK);
   }
 
   @DeleteMapping(path = "/{id}")

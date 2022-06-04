@@ -116,6 +116,34 @@
 			"response": []
 		},
 		{
+			"name": "rate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"score\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/movies/rate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"rate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "replace",
 			"request": {
 				"method": "PUT",
