@@ -15,6 +15,7 @@ public class MoviePutRequestBodyDTO {
   private List<WhereToWatchEnum> whereToWatch;
   private String imageUrl;
   private AdvisoryRatingEnum advisoryRating;
+  private String releaseYear;
 
   public MoviePutRequestBodyDTO() {}
 
@@ -27,7 +28,8 @@ public class MoviePutRequestBodyDTO {
       List<GenreEnum> genres,
       List<WhereToWatchEnum> whereToWatch,
       String imageUrl,
-      AdvisoryRatingEnum advisoryRating) {
+      AdvisoryRatingEnum advisoryRating,
+      String releaseYear) {
     this.id = id;
     this.title = title;
     this.director = director;
@@ -37,6 +39,7 @@ public class MoviePutRequestBodyDTO {
     this.whereToWatch = whereToWatch;
     this.imageUrl = imageUrl;
     this.advisoryRating = advisoryRating;
+    this.releaseYear = releaseYear;
   }
 
   public Long getId() {
@@ -109,5 +112,13 @@ public class MoviePutRequestBodyDTO {
 
   public void setAdvisoryRating(AdvisoryRatingEnum advisoryRating) {
     this.advisoryRating = advisoryRating;
+  }
+
+  public String getReleaseYear() {
+    return releaseYear;
+  }
+
+  public void setReleaseYear(String releaseYear) {
+    this.releaseYear = releaseYear;
   }
 }

@@ -15,6 +15,8 @@ public class MovieDTO {
   private List<WhereToWatchEnum> whereToWatch;
   private String imageUrl;
   private AdvisoryRatingEnum advisoryRating;
+  private String releaseYear;
+  private Integer numberOfReviews;
 
   public MovieDTO() {}
 
@@ -27,7 +29,9 @@ public class MovieDTO {
       List<GenreEnum> genres,
       List<WhereToWatchEnum> whereToWatch,
       String imageUrl,
-      AdvisoryRatingEnum advisoryRating) {
+      AdvisoryRatingEnum advisoryRating,
+      String releaseYear,
+      Integer numberOfReviews) {
     this.id = id;
     this.title = title;
     this.director = director;
@@ -37,6 +41,8 @@ public class MovieDTO {
     this.whereToWatch = whereToWatch;
     this.imageUrl = imageUrl;
     this.advisoryRating = advisoryRating;
+    this.releaseYear = releaseYear;
+    this.numberOfReviews = numberOfReviews;
   }
 
   public Long getId() {
@@ -109,5 +115,21 @@ public class MovieDTO {
 
   public void setAdvisoryRating(AdvisoryRatingEnum advisoryRating) {
     this.advisoryRating = advisoryRating;
+  }
+
+  public String getReleaseYear() {
+    return releaseYear;
+  }
+
+  public void setReleaseYear(String releaseYear) {
+    this.releaseYear = releaseYear;
+  }
+
+  public Integer getNumberOfReviews() {
+    return numberOfReviews;
+  }
+
+  public void setNumberOfReviews(Integer numberOfReviews) {
+    this.numberOfReviews = numberOfReviews;
   }
 }

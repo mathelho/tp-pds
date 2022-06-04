@@ -37,7 +37,9 @@ public class MovieService implements MovieServicePort {
 
   @Override
   public Movie save(MoviePostRequestBodyDTO movie) {
-    return movieRepositoryPort.save(MovieMapper.INSTANCE.toMovie(movie));
+    Movie movieToBeSaved = MovieMapper.INSTANCE.toMovie(movie);
+    movieToBeSaved.setNumberOfReviews(0);
+    return movieRepositoryPort.save(movieToBeSaved);
   }
 
   @Override
@@ -51,6 +53,7 @@ public class MovieService implements MovieServicePort {
 
     Movie movieToBeSaved = MovieMapper.INSTANCE.toMovie(movie);
     movieToBeSaved.setId(savedMovie.getId());
+    movieToBeSaved.setNumberOfReviews(savedMovie.getNumberOfReviews());
 
     movieRepositoryPort.save(movieToBeSaved);
   }

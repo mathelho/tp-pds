@@ -12,6 +12,8 @@ public class Movie {
   private List<WhereToWatchEnum> whereToWatch;
   private String imageUrl;
   private AdvisoryRatingEnum advisoryRating;
+  private String releaseYear;
+  private Integer numberOfReviews;
 
   public Movie() {}
 
@@ -24,7 +26,9 @@ public class Movie {
       List<GenreEnum> genres,
       List<WhereToWatchEnum> whereToWatch,
       String imageUrl,
-      AdvisoryRatingEnum advisoryRating) {
+      AdvisoryRatingEnum advisoryRating,
+      String releaseYear,
+      Integer numberOfReviews) {
     this.id = id;
     this.title = title;
     this.director = director;
@@ -34,6 +38,8 @@ public class Movie {
     this.whereToWatch = whereToWatch;
     this.imageUrl = imageUrl;
     this.advisoryRating = advisoryRating;
+    this.releaseYear = releaseYear;
+    this.numberOfReviews = numberOfReviews;
   }
 
   public Long getId() {
@@ -106,5 +112,21 @@ public class Movie {
 
   public void setAdvisoryRating(AdvisoryRatingEnum advisoryRating) {
     this.advisoryRating = advisoryRating;
+  }
+
+  public String getReleaseYear() {
+    return releaseYear;
+  }
+
+  public void setReleaseYear(String releaseYear) {
+    this.releaseYear = releaseYear;
+  }
+
+  public Integer getNumberOfReviews() {
+    return numberOfReviews;
+  }
+
+  public void setNumberOfReviews(Integer numberOfReviews) {
+    this.numberOfReviews = numberOfReviews;
   }
 }
