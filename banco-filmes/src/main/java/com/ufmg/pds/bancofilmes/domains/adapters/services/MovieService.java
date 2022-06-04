@@ -39,6 +39,7 @@ public class MovieService implements MovieServicePort {
   public Movie save(MoviePostRequestBodyDTO movie) {
     Movie movieToBeSaved = MovieMapper.INSTANCE.toMovie(movie);
     movieToBeSaved.setNumberOfReviews(0);
+    movieToBeSaved.setScore(0.0);
     return movieRepositoryPort.save(movieToBeSaved);
   }
 
@@ -54,6 +55,7 @@ public class MovieService implements MovieServicePort {
     Movie movieToBeSaved = MovieMapper.INSTANCE.toMovie(movie);
     movieToBeSaved.setId(savedMovie.getId());
     movieToBeSaved.setNumberOfReviews(savedMovie.getNumberOfReviews());
+    movieToBeSaved.setScore(savedMovie.getScore());
 
     movieRepositoryPort.save(movieToBeSaved);
   }

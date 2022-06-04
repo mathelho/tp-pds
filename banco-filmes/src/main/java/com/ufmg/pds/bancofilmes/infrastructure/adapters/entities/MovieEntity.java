@@ -12,8 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -32,9 +30,6 @@ public class MovieEntity {
   private String director;
 
   @JsonProperty("score")
-  @NotNull(message = "The Score should not be null")
-  @Min(value = 1, message = "The score must not be lower than 1")
-  @Max(value = 10, message = "The score must not be higher than 10")
   private Double score;
 
   @JsonProperty("synopsis")
