@@ -3,6 +3,8 @@ import { Movie } from "./MovieList";
 import imdbImg from '../assets/imdb_icon.svg'
 import starImg from '../assets/star.svg'
 import primeImg from '../assets/prime_video.svg'
+import netflixImg from '../assets/netflix.svg'
+import hboImg from '../assets/hbo_max.png'
 
 interface MovieInfoProps {
     movieChosen: Movie | null,
@@ -13,6 +15,18 @@ const streamingTypes = {
         image: {
             source: primeImg,
             alt: 'Ícone do Amazon Prime Video'
+        }
+    },
+    NETFLIX: {
+        image: {
+            source: netflixImg,
+            alt: 'Ícone da Netflix'
+        }
+    },
+    HBO_MAX: {
+        image: {
+            source: hboImg,
+            alt: 'Ícone do HBO Max'
         }
     }
 }
@@ -25,11 +39,13 @@ export function MovieInfo({ movieChosen }: MovieInfoProps) {
                 <img 
                     src={movieChosen?.imageUrl} 
                     alt="Poster do filme"
-                    className="w-[20%]"
+                    className="w-[20%] rounded-2xl"
                 />
 
-                <div className="mx-8">
-                    {movieChosen?.title}
+                <div className="mx-8 w-[480px]">
+                    <h1 className="text-xl font-extrabold">
+                        {movieChosen?.title}
+                    </h1>
 
                     <p className="mt-10">
                         {movieChosen?.synopsis}
@@ -61,8 +77,21 @@ export function MovieInfo({ movieChosen }: MovieInfoProps) {
             </section>
 
             <section className="flex justify-center items-center mt-10">
-                <div className="w-[200px] h-20 p-2 mx-2 border-[1px] border-[#CA7613] rounded-lg">
+                <div className="flex flex-col flex-wrap w-[200px] p-2 mx-2 border-[1px] border-[#CA7613] rounded-lg">
                     <p>Opções para assistir:</p>
+
+                    <div className="flex gap-2">
+                        {movieChosen?.whereToWatch.map(streaming => {
+                            return (
+                                <img
+                                    key={streaming}
+                                    src={streamingTypes[streaming as keyof typeof streamingTypes].image.source} 
+                                    alt={streamingTypes[streaming as keyof typeof streamingTypes].image.alt}
+                                    className='w-9 h-9 mt-2'
+                                />
+                            )
+                        })}
+                    </div>
 
                 </div>
 
