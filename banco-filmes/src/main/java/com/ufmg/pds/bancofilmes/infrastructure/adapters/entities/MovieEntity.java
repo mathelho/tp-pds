@@ -24,44 +24,48 @@ public class MovieEntity {
   private Long id;
 
   @JsonProperty("title")
-  @NotEmpty
+  @NotEmpty(message = "The movie title should not be empty")
   private String title;
 
   @JsonProperty("director")
-  @NotEmpty(message = "The director should not be empty")
+  @NotEmpty(message = "The movie director should not be empty")
   private String director;
 
   @JsonProperty("score")
   private Double score;
 
   @JsonProperty("imdbScore")
-  @NotNull(message = "The Score should not be null")
-  @Min(value = 1, message = "The score must not be lower than 1")
-  @Max(value = 10, message = "The score must not be higher than 10")
+  @NotNull(message = "Movie IMDb score should not be null")
+  @Min(value = 1, message = "Movie IMDb score must not be lower than 1")
+  @Max(value = 10, message = "Movie IMDb score must not be higher than 10")
   private Double imdbScore;
 
   @JsonProperty("synopsis")
-  @NotEmpty
+  @NotEmpty(message = "Movie synopsis should not be empty")
   private String synopsis;
 
   @JsonProperty("genres")
-  @NotNull(message = "Movies need to have a genre")
+  @NotNull(message = "Movie genres should not be null")
   @Convert(converter = GenreEnumConverter.class)
   private List<GenreEnum> genres;
 
   @JsonProperty("whereToWatch")
-  @NotNull(message = "Needs have at least one streaming option")
+  @NotNull(message = "Movie where to watch should not be null")
   @Convert(converter = WhereToWatchEnumConverter.class)
   private List<WhereToWatchEnum> whereToWatch;
 
   @JsonProperty("imageUrl")
-  @NotEmpty
+  @NotEmpty(message = "Movie image url should not be empty")
   private String imageUrl;
 
   @JsonProperty("advisoryRating")
+  @NotNull(message = "Movie advisory rating should not be null")
   private AdvisoryRatingEnum advisoryRating;
 
   @JsonProperty("releaseYear")
+  @NotNull(message = "Movie release year should not be null")
+  @Min(value = 1895, message = "Movie release year must not be lower than 1895")
+  @Max(value = 2035, message = "Movie release year must not be greater than 2035")
   private String releaseYear;
 
   @JsonProperty("numberOfReviews")
