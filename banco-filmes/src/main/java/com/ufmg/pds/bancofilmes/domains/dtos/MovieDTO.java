@@ -10,6 +10,7 @@ public class MovieDTO {
   private String title;
   private String director;
   private Double score;
+  private Double imdbScore;
   private String synopsis;
   private List<GenreEnum> genres;
   private List<WhereToWatchEnum> whereToWatch;
@@ -25,6 +26,7 @@ public class MovieDTO {
       String title,
       String director,
       Double score,
+      Double imdbScore,
       String synopsis,
       List<GenreEnum> genres,
       List<WhereToWatchEnum> whereToWatch,
@@ -36,6 +38,7 @@ public class MovieDTO {
     this.title = title;
     this.director = director;
     this.score = score;
+    this.imdbScore = imdbScore;
     this.synopsis = synopsis;
     this.genres = genres;
     this.whereToWatch = whereToWatch;
@@ -71,6 +74,14 @@ public class MovieDTO {
 
   public Double getScore() {
     return score;
+  }
+
+  public Double getImdbScore() {
+    return imdbScore;
+  }
+
+  public void setImdbScore(Double imdbScore) {
+    this.imdbScore = imdbScore;
   }
 
   public void setScore(Double score) {

@@ -7,6 +7,7 @@ public class Movie {
   private String title;
   private String director;
   private Double score;
+  private Double imdbScore;
   private String synopsis;
   private List<GenreEnum> genres;
   private List<WhereToWatchEnum> whereToWatch;
@@ -22,6 +23,7 @@ public class Movie {
       String title,
       String director,
       Double score,
+      Double imdbScore,
       String synopsis,
       List<GenreEnum> genres,
       List<WhereToWatchEnum> whereToWatch,
@@ -33,6 +35,7 @@ public class Movie {
     this.title = title;
     this.director = director;
     this.score = score;
+    this.imdbScore = imdbScore;
     this.synopsis = synopsis;
     this.genres = genres;
     this.whereToWatch = whereToWatch;
@@ -68,6 +71,14 @@ public class Movie {
 
   public Double getScore() {
     return score;
+  }
+
+  public Double getImdbScore() {
+    return imdbScore;
+  }
+
+  public void setImdbScore(Double imdbScore) {
+    this.imdbScore = imdbScore;
   }
 
   public void setScore(Double score) {

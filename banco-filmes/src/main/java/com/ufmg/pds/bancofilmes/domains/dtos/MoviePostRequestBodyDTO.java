@@ -8,6 +8,7 @@ import java.util.List;
 public class MoviePostRequestBodyDTO {
   private String title;
   private String director;
+  private Double imdbScore;
   private String synopsis;
   private List<GenreEnum> genres;
   private List<WhereToWatchEnum> whereToWatch;
@@ -20,6 +21,7 @@ public class MoviePostRequestBodyDTO {
   public MoviePostRequestBodyDTO(
       String title,
       String director,
+      Double imdbScore,
       String synopsis,
       List<GenreEnum> genres,
       List<WhereToWatchEnum> whereToWatch,
@@ -28,6 +30,7 @@ public class MoviePostRequestBodyDTO {
       String releaseYear) {
     this.title = title;
     this.director = director;
+    this.imdbScore = imdbScore;
     this.synopsis = synopsis;
     this.genres = genres;
     this.whereToWatch = whereToWatch;
@@ -50,6 +53,14 @@ public class MoviePostRequestBodyDTO {
 
   public void setDirector(String director) {
     this.director = director;
+  }
+
+  public Double getImdbScore() {
+    return imdbScore;
+  }
+
+  public void setImdbScore(Double imdbScore) {
+    this.imdbScore = imdbScore;
   }
 
   public String getSynopsis() {

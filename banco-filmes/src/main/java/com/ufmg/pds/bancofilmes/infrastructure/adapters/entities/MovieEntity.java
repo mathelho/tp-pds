@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -31,6 +33,12 @@ public class MovieEntity {
 
   @JsonProperty("score")
   private Double score;
+
+  @JsonProperty("imdbScore")
+  @NotNull(message = "The Score should not be null")
+  @Min(value = 1, message = "The score must not be lower than 1")
+  @Max(value = 10, message = "The score must not be higher than 10")
+  private Double imdbScore;
 
   @JsonProperty("synopsis")
   @NotEmpty
@@ -66,6 +74,7 @@ public class MovieEntity {
       String title,
       String director,
       Double score,
+      Double imdbScore,
       String synopsis,
       List<GenreEnum> genres,
       List<WhereToWatchEnum> whereToWatch,
@@ -77,6 +86,7 @@ public class MovieEntity {
     this.title = title;
     this.director = director;
     this.score = score;
+    this.imdbScore = imdbScore;
     this.synopsis = synopsis;
     this.genres = genres;
     this.whereToWatch = whereToWatch;
@@ -116,6 +126,14 @@ public class MovieEntity {
 
   public void setScore(Double score) {
     this.score = score;
+  }
+
+  public Double getImdbScore() {
+    return imdbScore;
+  }
+
+  public void setImdbScore(Double imdbScore) {
+    this.imdbScore = imdbScore;
   }
 
   public String getSynopsis() {
