@@ -11,6 +11,7 @@ import com.ufmg.pds.bancofilmes.exceptions.BadRequestException;
 import com.ufmg.pds.bancofilmes.exceptions.NotFoundException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.apache.commons.lang3.ObjectUtils;
@@ -70,6 +71,14 @@ public class MovieService implements MovieServicePort {
     savedMovie.setScore(newScore.doubleValue());
 
     return movieRepositoryPort.save(savedMovie);
+  }
+
+  @Override
+  public List<Movie> saveInBatch(List<MoviePostRequestBodyDTO> movies) {
+    List<Movie> savedMovies = new ArrayList<>();
+    movies.forEach(movie -> savedMovies.add(save(movie)));
+
+    return savedMovies;
   }
 
   @Override
