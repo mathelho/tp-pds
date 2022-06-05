@@ -38,6 +38,8 @@ de construir um HOW TO, explicando como setar todas as variáveis necessárias e
 - Após, execute um mvn clean install
 - Então rode o projeto (classe BancoFilmesApplication) no IntelliJ para subir a aplicação;
 - Importe o arquivo JSON (pode ser encontrado no diretório "collections" no nosso projeto) para o Postman, e então, use as funções que já desenvolvemos até então.
+- Para rodar a aplicação do frontend, após já ter instalado o Node.js, navegue até a pasta banco-filmes/web e rode no terminal o comando `npm install` para instalar todas as dependências (pode demorar um pouco).
+- Após concluir a instalação, rode o comando `npm run dev` para subir a aplicação React.
 
 ## Possível MVP
 

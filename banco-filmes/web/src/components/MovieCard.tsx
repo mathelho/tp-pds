@@ -11,12 +11,12 @@ export function MovieCard({ movie, setMovieChosen }: MovieCardProps) {
             <div onClick={() => setMovieChosen(movie)} className="w-32 h-48 break-all bg-transparent text-white rounded-2xl border-2 hover:border-[#CA7613] hover:cursor-pointer transition-all">
                 <img 
                     src={movie.imageUrl} 
-                    alt=""
+                    alt={`Poster do filme ${movie.title}`}
                     className="h-[100%] rounded-2xl"
                 />
             </div>
 
-            <p>{movie.title}, {movie.score}</p>
+            <p>{movie.title}, {movie.imdbScore}</p>
         </div>
     );
 }

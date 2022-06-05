@@ -9,11 +9,14 @@ export interface Movie {
     title: string,
     director: string,
     score: number,
+    imdbScore: number,
     synopsis: string,
     genres: string[],
     whereToWatch: string[],
     imageUrl: string,
-    advisoryRating: string
+    advisoryRating: string,
+    releaseYear: string,
+    numberOfReviews: number;
 }
 
 interface MovieListProps {
