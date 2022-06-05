@@ -72,6 +72,12 @@ public class MovieController {
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 
+  @DeleteMapping(path = "/clear")
+  public ResponseEntity<Void> clear() {
+    movieService.clear();
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+  }
+
   @PutMapping
   public ResponseEntity<Void> replace(@RequestBody MoviePutRequestBodyDTO movie) {
     movieService.replace(movie);
