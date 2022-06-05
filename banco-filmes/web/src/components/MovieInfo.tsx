@@ -1,4 +1,6 @@
 import { Movie } from "./MovieList";
+import { Popover } from "@headlessui/react";
+import { useState } from "react";
 
 import imdbImg from '../assets/imdb_icon.svg'
 import starImg from '../assets/star.svg'
@@ -32,6 +34,21 @@ const streamingTypes = {
 }
 
 export function MovieInfo({ movieChosen }: MovieInfoProps) {
+    const [userRatingInput, setUserRatingInput] = useState('');
+
+    function handleRatingSubmit() {
+        console.log(parseFloat(userRatingInput));
+
+        fetch('http://localhost:8080/movies/rate', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({"id": movieChosen?.id, "score": parseFloat(userRatingInput)})
+        }).then(response => response.json())
+        .then(response => console.log(response))
+    }
 
     return (
         <>
@@ -58,7 +75,7 @@ export function MovieInfo({ movieChosen }: MovieInfoProps) {
 
                             <div className="flex flex-row items-center">
                                 <img className="w-12 h-12" src={imdbImg} alt="Ícone do IMDB" />
-                                <p className="ml-2">{`${movieChosen?.score}/10`}</p>
+                                <p className="ml-2">{`${movieChosen?.imdbScore}/10`}</p>
                             </div>
                         </div>
 
@@ -67,7 +84,7 @@ export function MovieInfo({ movieChosen }: MovieInfoProps) {
                             
                             <div className="flex flex-row items-center">
                                 <img className="w-12 h-12" src={starImg} alt="Ícone do IMDB" />
-                                <p className="ml-2">{`??/10`}</p>
+                                <p className="ml-2">{`${movieChosen?.score}/10`}</p>
                             </div>
                         </div>
 
@@ -95,9 +112,27 @@ export function MovieInfo({ movieChosen }: MovieInfoProps) {
 
                 </div>
 
-                <button className="w-[200px] h-12 p-2 mx-2 border-[1px] border-[#CA7613] rounded-lg">
-                    <p>Avaliar o filme</p>
-                </button>
+                <Popover>
+                    <Popover.Button className="w-[200px] h-12 p-2 mx-2 border-[1px] border-[#CA7613] rounded-lg">
+                        <p>Avaliar o filme</p>
+                    </Popover.Button>
+
+                    <Popover.Panel className="flex flex-col items-center justify-center absolute p-3 top-20 left-0 right-0 mx-auto w-[466px] h-[234px] bg-black opacity-95">
+                        <input 
+                            className="text-black" 
+                            type="text" 
+                            placeholder="Digite a nota..."
+                            onChange={event => setUserRatingInput(event.target.value)}
+                        />
+
+                        <Popover.Button 
+                            className="h-11 w-[50%] mt-3 rounded-lg border-[1px] border-[#CA7613]"
+                            onClick={handleRatingSubmit}
+                        >
+                            Enviar avaliação
+                        </Popover.Button>
+                    </Popover.Panel>
+                </Popover>
 
                 <button className="w-[200px] h-12 p-2 mx-2 border-[1px] border-[#CA7613] rounded-lg">
                     <p>Add</p>

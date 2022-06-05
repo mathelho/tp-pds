@@ -16,7 +16,7 @@ export function MovieCard({ movie, setMovieChosen }: MovieCardProps) {
                 />
             </div>
 
-            <p>{movie.title}, {movie.score}</p>
+            <p>{movie.title}, {movie.imdbScore}</p>
         </div>
     );
 }
