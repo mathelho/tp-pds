@@ -87,6 +87,12 @@ public class MovieService implements MovieServicePort {
   }
 
   @Override
+  @Transactional
+  public void clear() {
+    movieRepositoryPort.clear();
+  }
+
+  @Override
   public void replace(MoviePutRequestBodyDTO movie) {
     Movie savedMovie = findById(movie.getId());
 

@@ -15,7 +15,7 @@ public interface MovieRepositoryPort {
 
   void delete(Movie movie);
 
-  void replace(Movie movie);
+  void clear();
 
   List<Movie> getTopTen();
 }

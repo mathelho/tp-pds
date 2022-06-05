@@ -13,7 +13,6 @@ public interface MovieServicePort {
 
   Movie findByTitle(String title);
 
-  // @Transactional
   Movie save(MoviePostRequestBodyDTO movie);
 
   Movie rate(RateMoviePostRequestBodyDTO rate);
@@ -21,6 +20,8 @@ public interface MovieServicePort {
   List<Movie> saveInBatch(List<MoviePostRequestBodyDTO> movies);
 
   void delete(Long id);
+
+  void clear();
 
   void replace(MoviePutRequestBodyDTO movie);
 

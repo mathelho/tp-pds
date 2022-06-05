@@ -47,8 +47,8 @@ public class MovieRepository implements MovieRepositoryPort {
   }
 
   @Override
-  public void replace(Movie movie) {
-    springMovieRepository.save(MovieEntityMapper.INSTANCE.toMovieEntity(movie));
+  public void clear() {
+    springMovieRepository.clear();
   }
 
   @Override
