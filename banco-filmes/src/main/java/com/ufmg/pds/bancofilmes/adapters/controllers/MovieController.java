@@ -60,6 +60,12 @@ public class MovieController {
     return new ResponseEntity<>(movieService.rate(score), HttpStatus.OK);
   }
 
+  @PostMapping(path = "/batch")
+  public ResponseEntity<List<Movie>> saveInBatch(
+      @RequestBody List<MoviePostRequestBodyDTO> movies) {
+    return new ResponseEntity<>(movieService.saveInBatch(movies), HttpStatus.CREATED);
+  }
+
   @DeleteMapping(path = "/{id}")
   public ResponseEntity<Void> delete(@PathVariable Long id) {
     movieService.delete(id);

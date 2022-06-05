@@ -18,6 +18,8 @@ public interface MovieServicePort {
 
   Movie rate(RateMoviePostRequestBodyDTO rate);
 
+  List<Movie> saveInBatch(List<MoviePostRequestBodyDTO> movies);
+
   void delete(Long id);
 
   void replace(MoviePutRequestBodyDTO movie);

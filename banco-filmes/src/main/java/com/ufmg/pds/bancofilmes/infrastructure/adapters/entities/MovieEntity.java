@@ -7,6 +7,7 @@ import com.ufmg.pds.bancofilmes.domains.WhereToWatchEnum;
 import com.ufmg.pds.bancofilmes.infrastructure.adapters.entities.converters.GenreEnumConverter;
 import com.ufmg.pds.bancofilmes.infrastructure.adapters.entities.converters.WhereToWatchEnumConverter;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -41,6 +42,7 @@ public class MovieEntity {
   private Double imdbScore;
 
   @JsonProperty("synopsis")
+  @Column(name = "synopsis", columnDefinition = "LONGTEXT")
   @NotEmpty(message = "Movie synopsis should not be empty")
   private String synopsis;
 

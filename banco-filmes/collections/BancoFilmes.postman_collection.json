@@ -122,7 +122,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 1,\r\n    \"score\": 10\r\n}",
+					"raw": "{\r\n    \"id\": 6,\r\n    \"score\": 10\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -138,6 +138,34 @@
 					"path": [
 						"movies",
 						"rate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "saveInBatch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"title\": \"Interestelar\",\r\n        \"director\": \"Christopher Nolan\",\r\n        \"imdbScore\": 8.6,\r\n        \"synopsis\": \"As reservas naturais da Terra estão chegando ao fim e um grupo de astronautas recebe a missão de verificar possíveis planetas para receberem a população mundial, possibilitando a continuação da espécie. Cooper é chamado para liderar o grupo e aceita a missão sabendo que pode nunca mais ver os filhos. Ao lado de Brand, Jenkins e Doyle, ele seguirá em busca de um novo lar.\",\r\n        \"genres\": [\r\n            \"ADVENTURE\",\r\n            \"DRAMA\",\r\n            \"SCIENCE_FICTION\"\r\n        ],\r\n        \"whereToWatch\": [\r\n            \"HBO_MAX\"\r\n        ],\r\n        \"imageUrl\": \"www.bancodefilmes.com.br\",\r\n        \"advisoryRating\": \"DEZ\",\r\n        \"releaseYear\": 2014\r\n    },\r\n    {\r\n        \"title\": \"Batman: O Cavaleiro das Trevas\",\r\n        \"director\": \"Christopher Nolan\",\r\n        \"imdbScore\": 9,\r\n        \"synopsis\": \"Com a ajuda de Jim Gordon e Harvey Dent, Batman tem mantido a ordem na cidade de Gotham. Mas um jovem e anárquico criminoso conhecido como Coringa ganha força e decide instaurar um verdadeiro caos na cidade. O justiceiro será testado psicologicamente e fisicamente como nunca fora antes em um confronto bastante pessoal. Cabe a Batman encontrar uma maneira de deter o sádico vilão antes que mais vidas sejam perdidas.\",\r\n        \"genres\": [\r\n            \"ACTION\",\r\n            \"ADVENTURE\"\r\n        ],\r\n        \"whereToWatch\": [\r\n            \"HBO_MAX\",\r\n            \"NETFLIX\"\r\n        ],\r\n        \"imageUrl\": \"www.bancodefilmes.com.br\",\r\n        \"advisoryRating\": \"DOZE\",\r\n        \"releaseYear\": 2008\r\n    },\r\n    {\r\n        \"title\": \"Coringa\",\r\n        \"director\": \"Todd Phillips\",\r\n        \"imdbScore\": 8.4,\r\n        \"synopsis\": \"Isolado, intimidado e desconsiderado pela sociedade, o fracassado comediante Arthur Fleck inicia seu caminho como uma mente criminosa. Sua ação inicia um movimento popular contra a elite de Gotham City, da qual Thomas Wayne é seu maior representante.\",\r\n        \"genres\": [\r\n            \"DRAMA\",\r\n            \"MYSTERY\"\r\n        ],\r\n        \"whereToWatch\": [\r\n            \"GLOBO_PLAY\"\r\n        ],\r\n        \"imageUrl\": \"www.bancodefilmes.com.br\",\r\n        \"advisoryRating\": \"DEZESSEIS\",\r\n        \"releaseYear\": 2019\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/movies/batch",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies",
+						"batch"
 					]
 				}
 			},
@@ -176,14 +204,14 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/movies/1",
+					"raw": "localhost:8080/movies/4",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"movies",
-						"1"
+						"4"
 					]
 				}
 			},
