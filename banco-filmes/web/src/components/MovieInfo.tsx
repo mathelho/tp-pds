@@ -55,7 +55,7 @@ export function MovieInfo({ movieChosen }: MovieInfoProps) {
             <section className="flex justify-center m-4">
                 <img 
                     src={movieChosen?.imageUrl} 
-                    alt="Poster do filme"
+                    alt={`Poster do filme ${movieChosen?.title}`}
                     className="w-[20%] rounded-2xl"
                 />
 
