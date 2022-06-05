@@ -12,12 +12,12 @@ interface FilterModalProps {
 export function FilterModal({ movieList, setMovieList, setIsHomeOpen }: FilterModalProps) {
     const [titleQuery, setTitleQuery] = useState(''); // armazena o texto do input de título
     const [genreQuery, setGenreQuery] = useState(''); // armazena o texto do input de gênero
+    const [scoreQuery, setScoreQuery] = useState(0); // armazena a número do input de nota
 
     function handleFilter() {
     
         console.log(titleQuery, genreQuery);
-        const filteredMovieList = movieList.filter(movie => movie.title.toUpperCase().includes(titleQuery.toUpperCase()));
-
+        const filteredMovieList = movieList.filter(movie => ((movie.title.toUpperCase().includes(titleQuery.toUpperCase())) && (movie.score >= scoreQuery) && (movie.genres.includes(genreQuery))));
         setMovieList(filteredMovieList);
         
     }
@@ -58,7 +58,17 @@ export function FilterModal({ movieList, setMovieList, setIsHomeOpen }: FilterMo
                         <option className="text-black" value="THRILLER">Thriller</option>
                 </select>
 
-                <span>Buscar por nota do IMDB</span>
+                <h2 className="text-xl mb-2">Buscar por nota do IMDB</h2>
+                <input
+                    className="w-20 h-8 p-4 rounded-md bg-transparent border-2 border-[#CA7613]"
+                    type="number"
+                    min="0"
+                    max="10"
+                    placeholder="0"
+                    onChange={event => setScoreQuery(event.target.value)}
+                >
+                </input>
+
 
             </div>
 
