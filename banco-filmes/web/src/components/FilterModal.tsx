@@ -16,8 +16,14 @@ export function FilterModal({ movieList, setMovieList, setIsHomeOpen }: FilterMo
 
     function handleFilter() {
     
-        console.log(titleQuery, genreQuery);
-        const filteredMovieList = movieList.filter(movie => ((movie.title.toUpperCase().includes(titleQuery.toUpperCase())) && (movie.score >= scoreQuery) && (movie.genres.includes(genreQuery))));
+        console.log(titleQuery, genreQuery,scoreQuery);
+        let filteredMovieList;
+
+        if(genreQuery != '')
+            filteredMovieList = movieList.filter(movie => ((movie.title.toUpperCase().includes(titleQuery.toUpperCase())) && (movie.score >= scoreQuery) && (movie.genres.includes(genreQuery))));
+        else
+            filteredMovieList = movieList.filter(movie => ((movie.title.toUpperCase().includes(titleQuery.toUpperCase())) && (movie.score >= scoreQuery)));
+
         setMovieList(filteredMovieList);
         
     }
@@ -64,8 +70,9 @@ export function FilterModal({ movieList, setMovieList, setIsHomeOpen }: FilterMo
                     type="number"
                     min="0"
                     max="10"
+                    step="0.5"
                     placeholder="0"
-                    onChange={event => setScoreQuery(event.target.value)}
+                    onChange={event => setScoreQuery(Number(event.target.value))}
                 >
                 </input>
 
