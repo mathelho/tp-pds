@@ -7,6 +7,13 @@ import starImg from '../assets/star.svg'
 import primeImg from '../assets/prime_video.svg'
 import netflixImg from '../assets/netflix.svg'
 import hboImg from '../assets/hbo_max.png'
+import globoPlayImg from '../assets/globo_play.jpeg'
+import appleTvPlusImg from '../assets/apple_tv_plus.jpeg'
+import crunchyrollImg from '../assets/crunchyroll.jpeg'
+import dysneyPlusImg from '../assets/dysney.jpeg'
+import huluImg from '../assets/hulu.png'
+import paramountPlusImg from '../assets/paramount_plus.jpeg'
+import starPlusImg from '../assets/star_plus.png'
 
 interface MovieInfoProps {
     movieChosen: Movie | null,
@@ -30,7 +37,49 @@ const streamingTypes = {
             source: hboImg,
             alt: 'Ícone do HBO Max'
         }
-    }
+    },
+    GLOBO_PLAY: {
+        image: {
+            source: globoPlayImg,
+            alt: 'Ícone do Globo Play'
+        }
+    },
+    APPLE_TV_PLUS: {
+            image: {
+                source: appleTvPlusImg,
+                alt: 'Ícone do Apple TV Plus'
+            }
+        },
+    CRUNCHYROLL: {
+            image: {
+                source: crunchyrollImg,
+                alt: 'Ícone do Crunchyroll'
+            }
+        },
+    HULU: {
+            image: {
+                source: globoPlayImg,
+                alt: 'Ícone do Hulu'
+            }
+        },
+    DISNEY_PLUS: {
+            image: {
+                source: dysneyPlusImg,
+                alt: 'Ícone do Dysney Plus'
+            }
+        },
+    PARAMOUNT_PLUS: {
+            image: {
+                source: paramountPlusImg,
+                alt: 'Ícone do Paramount Plus'
+            }
+        },
+    STAR_PLUS: {
+            image: {
+                source: starPlusImg,
+                alt: 'Ícone do Star Plus'
+            }
+        }
 }
 
 export function MovieInfo({ movieChosen }: MovieInfoProps) {
