@@ -8,7 +8,7 @@ interface MovieCardProps {
 export function MovieCard({ movie, setMovieChosen }: MovieCardProps) {
     return (
         <div className="flex flex-col items-center w-[50%]">
-            <div onClick={() => setMovieChosen(movie)} className="w-32 h-48 break-all bg-transparent text-white rounded-2xl border-2 hover:border-[#CA7613] hover:cursor-pointer transition-all">
+            <div onClick={() => setMovieChosen(movie)} className="w-32 h-48 break-all bg-transparent text-white rounded-2xl border-2 border-[#1D1919] hover:border-[#CA7613] hover:cursor-pointer transition-all">
                 <img 
                     src={movie.imageUrl} 
                     alt={`Poster do filme ${movie.title}`}

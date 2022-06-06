@@ -3,6 +3,7 @@ import { FilterButton } from "./FilterButton";
 import { MovieCard } from "./MovieCard";
 import { MovieInfo } from "./MovieInfo";
 import { MovieRanking } from "./MovieRanking";
+import { WatchList } from "./WatchList";
 
 export interface Movie {
     id: number,
@@ -22,12 +23,15 @@ export interface Movie {
 interface MovieListProps {
     onHomeOpen: boolean,
     onRankingOpen: boolean,
+    onWatchListOpen: boolean,
     setIsHomeOpen: React.Dispatch<React.SetStateAction<boolean>>,
-    setIsRankingOpen: React.Dispatch<React.SetStateAction<boolean>>
+    setIsRankingOpen: React.Dispatch<React.SetStateAction<boolean>>,
+    setIsWatchListOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export function MovieList({ onHomeOpen, onRankingOpen, setIsHomeOpen, setIsRankingOpen }: MovieListProps) {
+export function MovieList({ onHomeOpen, onRankingOpen, onWatchListOpen, setIsHomeOpen, setIsRankingOpen, setIsWatchListOpen }: MovieListProps) {
     const [movieList, setMovieList] = useState<Movie[]>([]);
+    const [watchList, setWatchList] = useState<Movie[]>([]);
     const [movieChosen, setMovieChosen] = useState<Movie | null>(null);
 
     useEffect(() => {
@@ -37,20 +41,33 @@ export function MovieList({ onHomeOpen, onRankingOpen, setIsHomeOpen, setIsRanki
             .then(data => setMovieList(data))
 
             setIsRankingOpen(false);
+            setIsWatchListOpen(false);
         }
     }, [onHomeOpen])
 
     useEffect(() => {
         if (movieChosen) {
             setIsHomeOpen(false);
+            setIsRankingOpen(false);
+            setIsWatchListOpen(false);
         }
     }, [movieChosen])
 
     useEffect(() => {
         if (onRankingOpen) {
             setIsHomeOpen(false);
+            setIsWatchListOpen(false);
+            setMovieChosen(null);
         }
     }, [onRankingOpen])
+
+    useEffect(() => {
+        if (onWatchListOpen) {
+            setIsHomeOpen(false);
+            setIsRankingOpen(false);
+            setMovieChosen(null);
+        }
+    }, [onWatchListOpen])
 
     return (
         <>
@@ -70,9 +87,15 @@ export function MovieList({ onHomeOpen, onRankingOpen, setIsHomeOpen, setIsRanki
             ) : (
                 <>
                     {onRankingOpen ? (
-                        <MovieRanking />
+                        <MovieRanking setMovieChosen={setMovieChosen} />
                     ) : (
-                        <MovieInfo movieChosen={movieChosen} />
+                        <>
+                            {onWatchListOpen ? (
+                                <WatchList watchList={watchList} setWatchList={setWatchList} setMovieChosen={setMovieChosen} />
+                            ) : (
+                                <MovieInfo movieChosen={movieChosen} watchList={watchList} setWatchList={setWatchList} />
+                            )}
+                        </>
                     )}
                 </>
             )}
