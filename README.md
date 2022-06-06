@@ -68,7 +68,7 @@ inteiro.
 
 ## Backlog Back-end
 
-### Estruturar basicamente o projeto
+### Estruturar basicamente o projeto DONE
 Para que os desenvolvedores possam atuar paralelamente, a estrutura básica do projeto precisa estar bem definida para que não ocorram muitos conflitos durante as outras estórias do sprint
 #### Tarefas:
 - 1 - Definir arquitetura do projeto [Time completo]
@@ -79,21 +79,21 @@ Para que os desenvolvedores possam atuar paralelamente, a estrutura básica do p
     - 4.2 - Criar atributo da Controller, MovieService, e criar um construtor com esse atributo;
     - 4.3 - Uma lista de Movie será criada no MovieService para que as funcionalidade possam ser testadas, essa lista será estática com algumas informações de filme pré-definidas.
 
-### Listar filmes
+### Listar filmes DONE
 Com a estrutura pronta, pode-se começar a adicionar funcionalidades. Nesta estória, será feito o verbo GET, do endpoint /movies. Essa funcionalidade será responsável por retornar todos os filmes salvos no banco de dados. Porém, como ainda não se tem uma estrutura de banco de dados definida, será retornada a lista de filmes criada anteriormente.
 #### Tarefas:
 - 1 - MovieService - Criar método listAll(), retornando a lista de filmes [Celso]
 - 2 - MovieController - Criar método listAll(), o qual irá chamar o método recém criado no MovieService [Celso]
     - Não se esquecer de que o Controller não irá retornar uma classe de domínio do projeto, irá retornar um ResponseEntity dessa classe
 
-### Adicionar filme
+### Adicionar filme DONE
 Com a estrutura pronta, pode-se começar a adicionar funcionalidades. Nesta estória, será feito o verbo POST, do endpoint /movies. Essa funcionalidade será responsável por adicionar novos filmes no banco de dados. Porém, como ainda não se tem uma estrutura de banco de dados definida, será adicionado à lista de filmes criada anteriormente.
 #### Tarefas:
 - 1 - MovieService - Criar método save(Movie movie), adicionando movie na lista de Movie.  [Felipe]
 - 2 - MovieController Criar método save, o qual irá chamar o método recém criado no MovieService [Felipe]
     - Não se esquecer de que o Controller não irá retornar uma classe de domínio do projeto, irá retornar um ResponseEntity do objeto recém criado.
 
-### Encontrar filme por ID
+### Encontrar filme por ID DONE
 Com a estrutura pronta, pode-se começar a adicionar funcionalidades. Nesta estória, será feito outro verbo GET, do endpoint /movies/{id}. Essa funcionalidade será responsável por encontrar um filme por ID no banco de dados. Porém, como ainda não se tem uma estrutura de banco de dados definida, será encontrado na lista de filmes criada anteriormente.
 #### Tarefas:
 - 1 - Movie Service - Criar método findById(Long id) [Celso]
@@ -102,7 +102,7 @@ Com a estrutura pronta, pode-se começar a adicionar funcionalidades. Nesta est�
     - Não se esquecer de que o Controller não irá retornar uma classe de domínio do projeto, irá retornar um ResponseEntity do objeto encontrado.
     - Use a annotation @GetMapping(path = "/{id}") no Controller, pois não podemos ter dois verbos iguais mapeados para o mesmo endpoint.
     
-### Remover filmes
+### Remover filmes DONE
 #### Depende da estória "Encontrar filme por ID"
 Com a estrutura pronta, pode-se começar a adicionar funcionalidades. Nesta estória, será feito o verbo PUT, do endpoint /movies. Essa funcionalidade será responsável por remover filmes no banco de dados. Porém, como ainda não se tem uma estrutura de banco de dados definida, removerá um filme da lista criada anteriormente.
 #### Tarefas:
@@ -112,7 +112,7 @@ Com a estrutura pronta, pode-se começar a adicionar funcionalidades. Nesta est�
 - 2 - MovieController Criar método replace, o qual irá chamar o método recém criado no MovieService [Celso]
     - PUT e DELETE não retornarão o objeto, apenas um ResponseEntity<>(HttpStatus.NO_CONTENT) caso der tudo certo.
 
-### Editar filmes
+### Editar filmes DONE
 #### Depende da estória "Encontrar filme por ID"
 Com a estrutura pronta, pode-se começar a adicionar funcionalidades. Nesta estória, será feito o verbo PUT, do endpoint /movies. Essa funcionalidade será responsável por editar (sobrescrever) filmes no banco de dados. Porém, como ainda não se tem uma estrutura de banco de dados definida, removerá um objeto da lista criada anteriormente e adicionará o novo.
 #### Tarefas:
@@ -121,7 +121,7 @@ Com a estrutura pronta, pode-se começar a adicionar funcionalidades. Nesta est�
 - 2 - MovieController Criar método delete, o qual irá chamar o método recém criado no MovieService [Celso]
     - PUT e DELETE não retornarão o objeto, apenas um ResponseEntity<>(HttpStatus.NO_CONTENT) caso der tudo certo.
 
-### Preparando Projeto Para Persistir Dados
+### Preparando Projeto Para Persistir Dados DONE
 Persistir dados no banco de dados com a dependência Spring JPA
 #### Tarefas:
 - 1 - Estudar dependência da JPA [Felipe]
@@ -132,14 +132,14 @@ Persistir dados no banco de dados com a dependência Spring JPA
 - 6 - Atualizar a controller, e testar o novo método [Felipe]
 - 7 - Mostrar resultados para o time [Time completo]
 
-### Persistir Dados
+### Persistir Dados DONE
 Persistir dados no banco de dados com a dependência Spring JPA
 #### Tarefas:
 - 1 - Remover lista pré definida de filmes e atualizar os métodos do MovieService
 - 2 - Atualizar a Controller
 - 3 - Testar
 
-### Cadastrar usuário
+### Cadastrar usuário CANCELED
 [POC] Estudar como fazer cadastro de usuário utilizando Springboot e apresentar resultados para o time. [Felipe]
 
 ## Backlog Front-end
