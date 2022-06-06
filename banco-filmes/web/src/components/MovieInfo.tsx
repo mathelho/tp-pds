@@ -17,6 +17,8 @@ import starPlusImg from '../assets/star_plus.png'
 
 interface MovieInfoProps {
     movieChosen: Movie | null,
+    watchList: Movie[],
+    setWatchList: React.Dispatch<React.SetStateAction<Movie[]>>;
 }
 
 const streamingTypes = {
@@ -45,44 +47,44 @@ const streamingTypes = {
         }
     },
     APPLE_TV_PLUS: {
-            image: {
-                source: appleTvPlusImg,
-                alt: 'Ícone do Apple TV Plus'
-            }
-        },
-    CRUNCHYROLL: {
-            image: {
-                source: crunchyrollImg,
-                alt: 'Ícone do Crunchyroll'
-            }
-        },
-    HULU: {
-            image: {
-                source: globoPlayImg,
-                alt: 'Ícone do Hulu'
-            }
-        },
-    DISNEY_PLUS: {
-            image: {
-                source: dysneyPlusImg,
-                alt: 'Ícone do Dysney Plus'
-            }
-        },
-    PARAMOUNT_PLUS: {
-            image: {
-                source: paramountPlusImg,
-                alt: 'Ícone do Paramount Plus'
-            }
-        },
-    STAR_PLUS: {
-            image: {
-                source: starPlusImg,
-                alt: 'Ícone do Star Plus'
-            }
+        image: {
+            source: appleTvPlusImg,
+            alt: 'Ícone do Apple TV Plus'
         }
+    },
+    CRUNCHYROLL: {
+        image: {
+            source: crunchyrollImg,
+            alt: 'Ícone do Crunchyroll'
+        }
+    },
+    HULU: {
+        image: {
+            source: globoPlayImg,
+            alt: 'Ícone do Hulu'
+        }
+    },
+    DISNEY_PLUS: {
+        image: {
+            source: dysneyPlusImg,
+            alt: 'Ícone do Dysney Plus'
+        }
+    },
+    PARAMOUNT_PLUS: {
+        image: {
+            source: paramountPlusImg,
+            alt: 'Ícone do Paramount Plus'
+        }
+    },
+    STAR_PLUS: {
+        image: {
+            source: starPlusImg,
+            alt: 'Ícone do Star Plus'
+        }
+    }
 }
 
-export function MovieInfo({ movieChosen }: MovieInfoProps) {
+export function MovieInfo({ movieChosen, watchList, setWatchList }: MovieInfoProps) {
     const [userRatingInput, setUserRatingInput] = useState('');
 
     function handleRatingSubmit() {
@@ -97,6 +99,15 @@ export function MovieInfo({ movieChosen }: MovieInfoProps) {
             body: JSON.stringify({"id": movieChosen?.id, "score": parseFloat(userRatingInput)})
         }).then(response => response.json())
         .then(response => console.log(response))
+    }
+
+    function handleAddMovieToWatchList() {
+        if (watchList.find(movie => movie.id === movieChosen?.id)) {
+            alert('O filme já está na sua Watch List.');
+        } else {
+            setWatchList(movie => [...movie, movieChosen!]);
+            alert('Adicionado na Watch List!');
+        }
     }
 
     return (
@@ -183,7 +194,10 @@ export function MovieInfo({ movieChosen }: MovieInfoProps) {
                     </Popover.Panel>
                 </Popover>
 
-                <button className="w-[200px] h-12 p-2 mx-2 border-[1px] border-[#CA7613] rounded-lg">
+                <button 
+                    className="w-[200px] h-12 p-2 mx-2 border-[1px] border-[#CA7613] rounded-lg"
+                    onClick={handleAddMovieToWatchList}
+                >
                     <p>Add</p>
                 </button>
             </section>

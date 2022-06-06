@@ -23,7 +23,7 @@ export function MovieRanking({ setMovieChosen }: MovieRankingProps) {
                     rankingNumber++;
                     
                     return (
-                        <div key={movie.id} onClick={() => setMovieChosen(movie)} className="flex flex-row my-6 w-[50%] hover:cursor-pointer hover:brightness-90">
+                        <div key={movie.id} onClick={() => setMovieChosen(movie)} className="flex flex-row my-6 w-[50%] hover:cursor-pointer hover:brightness-90 transition-all">
                             <img
                                 src={movie.imageUrl}
                                 alt={`Poster do filme ${movie.title}`}
