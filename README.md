@@ -20,23 +20,22 @@ no mínimo enquanto dividirmos as subtasks entre os componentes da equipe.
 
 ## Requisitos:
 
-Para começar a utilizar Banco de filmes é necessário atendes a alguns pré requisitos básicos que apresentaremos a seguir:
-- Instalar JDK na versão 17;
-- Instalar a IDE IntelliJ (Opcional, para visualizar o código)
+Para começar a utilizar Banco de filmes é necessário atender a alguns pré requisitos básicos que apresentaremos a seguir:
+- Instalar JDK na versão 17
+- Instalar a IDE IntelliJ
 - Instalar o Maven
 - Instalar Docker
 - Instalar MySQL Workbench
 - Instalar Postman
 - Instalar o Node.js
-- Instalar o Yarn (opcional, pode-se usar o gerenciador padrão do Node também)
+- Instalar o Yarn (Opcional, pode-se usar o gerenciador padrão do Node também)
 
-Após instalar as ferramentas necessárias você estará apto a utilizar o sistema de forma completa. (Ou não, necessário verificar a necessidade
-de construir um HOW TO, explicando como setar todas as variáveis necessárias e organizar o ambiente para que o usuário consiga efetivamente utiliza-lo)
+Após instalar as ferramentas necessárias, você estará apto a utilizar o sistema de forma completa.
 
 ## Step-by-Step
-- Para rodar o sistema pela primeira vez, execute um "docker-compose-up" estando no diretório tp-pds/banco-filmes
-- Após, execute um mvn clean install
-- Então rode o projeto (classe BancoFilmesApplication) no IntelliJ para subir a aplicação;
+- Para rodar o sistema pela primeira vez, execute um `docker compose up` estando no diretório `tp-pds/banco-filmes`.
+- Após, execute um `mvn clean install`.
+- Então rode o projeto (classe BancoFilmesApplication) no IntelliJ para subir a aplicação.
 - Importe o arquivo JSON (pode ser encontrado no diretório "collections" no nosso projeto) para o Postman, e então, use as funções que já desenvolvemos até então.
 - Para rodar a aplicação do frontend, após já ter instalado o Node.js, navegue até a pasta banco-filmes/web e rode no terminal o comando `npm install` para instalar todas as dependências (pode demorar um pouco).
 - Após concluir a instalação, rode o comando `npm run dev` para subir a aplicação React.
@@ -213,17 +212,17 @@ Na arquitetura hexagonal, as portas são as interfaces usadas para se comunicar 
 domínio.
 
 Portas no projeto:
-- MovieRepositoryPort: Porta de saída, chama as classes do banco de dados através da classe de 
+- `MovieRepositoryPort`: Porta de saída, chama as classes do banco de dados através da classe de 
 domínio.
-- MovieServicePort: Porta de entrada, chama as classes do domínio através da interface web.
+- `MovieServicePort`: Porta de entrada, chama as classes do domínio através da interface web.
 
 #### Adaptadores:
 Os adaptadores consistem em estruturas que recebem chamadas de dentro do sistema e direcionam para 
 funções externas ou chamadas externas e direcionam para as portas de entrada.
 
 Adaptadores no projeto:
-- MovieRepository: direciona as chamadas internas do domínio para o banco de dados;
-- MovieController: recebe as chamadas REST do front-end, e as adapta para o domínio do sistema.
+- `MovieRepository`: direciona as chamadas internas do domínio para o banco de dados;
+- `MovieController`: recebe as chamadas REST do front-end, e as adapta para o domínio do sistema.
 
 #### Além disso, utilizamos os conceitos de DDD.
 O DDD tem o objetivo de centrar o design no domínio do negócio. O domínio é o problema de negócio a 
@@ -233,16 +232,16 @@ de dados, ou a framework de desenvolvimento, não precisaremos modificar nada no
 está livre de tecnologia, neste caso, é Java puro.
 
 #### Entidade
-- Movie: nessa entidade temos os atributos de um filme e getters e setters para acessá-los.
+- `Movie`: nessa entidade temos os atributos de um filme e getters e setters para acessá-los.
 
 #### Objeto de valor
-- Title: Nome do filme
-- GenreEnum: Nesse arquivo definimos os gêneros que possuímos no filme, não possuindo identificador 
+- `Title`: Nome do filme
+- `GenreEnum`: Nesse arquivo definimos os gêneros que possuímos no filme, não possuindo identificador 
 único.
 
 #### Serviço
-- MovieService: É onde definimos as lógicas de negócio importantes realizadas nos filmes no nosso 
+- `MovieService`: É onde definimos as lógicas de negócio importantes realizadas nos filmes no nosso 
 domínio, tais como encontrar filmes por título, salvar filmes, deletar filmes, avaliar filme e etc.
 
 #### Repositório
-- MovieRepository: Classe utilizada para recuperar filmes do nosso banco de dados.
+- `MovieRepository`: Classe utilizada para recuperar filmes do nosso banco de dados.
