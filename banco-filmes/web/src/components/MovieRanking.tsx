@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { Movie } from "./MovieList";
 
-export function MovieRanking() {
+interface MovieRankingProps {
+    setMovieChosen: React.Dispatch<React.SetStateAction<Movie | null>>
+}
+
+export function MovieRanking({ setMovieChosen }: MovieRankingProps) {
     const [rankingList, setRankingList] = useState<Movie[]>([]);
 
     useEffect(() => {
@@ -19,8 +23,8 @@ export function MovieRanking() {
                     rankingNumber++;
                     
                     return (
-                        <div className="flex flex-row my-6 w-[50%]">
-                            <img 
+                        <div key={movie.id} onClick={() => setMovieChosen(movie)} className="flex flex-row my-6 w-[50%] hover:cursor-pointer hover:brightness-90">
+                            <img
                                 src={movie.imageUrl}
                                 alt={`Poster do filme ${movie.title}`}
                                 className="w-[204px] h-[303px] rounded-2xl"

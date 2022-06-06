@@ -43,6 +43,7 @@ export function MovieList({ onHomeOpen, onRankingOpen, setIsHomeOpen, setIsRanki
     useEffect(() => {
         if (movieChosen) {
             setIsHomeOpen(false);
+            setIsRankingOpen(false);
         }
     }, [movieChosen])
 
@@ -70,7 +71,7 @@ export function MovieList({ onHomeOpen, onRankingOpen, setIsHomeOpen, setIsRanki
             ) : (
                 <>
                     {onRankingOpen ? (
-                        <MovieRanking />
+                        <MovieRanking setMovieChosen={setMovieChosen} />
                     ) : (
                         <MovieInfo movieChosen={movieChosen} />
                     )}
