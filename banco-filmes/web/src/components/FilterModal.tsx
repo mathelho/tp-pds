@@ -12,17 +12,17 @@ interface FilterModalProps {
 export function FilterModal({ movieList, setMovieList, setIsHomeOpen }: FilterModalProps) {
     const [titleQuery, setTitleQuery] = useState(''); // armazena o texto do input de título
     const [genreQuery, setGenreQuery] = useState(''); // armazena o texto do input de gênero
-    const [scoreQuery, setScoreQuery] = useState(0); // armazena a número do input de nota
+    const [imdbScoreQuery, setimdbScoreQuery] = useState(0); // armazena a número do input de nota
 
     function handleFilter() {
     
-        console.log(titleQuery, genreQuery,scoreQuery);
+        console.log(titleQuery, genreQuery,imdbScoreQuery);
         let filteredMovieList;
 
         if(genreQuery != '')
-            filteredMovieList = movieList.filter(movie => ((movie.title.toUpperCase().includes(titleQuery.toUpperCase())) && (movie.score >= scoreQuery) && (movie.genres.includes(genreQuery))));
+            filteredMovieList = movieList.filter(movie => ((movie.title.toUpperCase().includes(titleQuery.toUpperCase())) && (movie.imdbScore >= imdbScoreQuery) && (movie.genres.includes(genreQuery))));
         else
-            filteredMovieList = movieList.filter(movie => ((movie.title.toUpperCase().includes(titleQuery.toUpperCase())) && (movie.score >= scoreQuery)));
+            filteredMovieList = movieList.filter(movie => ((movie.title.toUpperCase().includes(titleQuery.toUpperCase())) && (movie.imdbScore >= imdbScoreQuery)));
 
         setMovieList(filteredMovieList);
         
@@ -72,7 +72,7 @@ export function FilterModal({ movieList, setMovieList, setIsHomeOpen }: FilterMo
                     max="10"
                     step="0.5"
                     placeholder="0"
-                    onChange={event => setScoreQuery(Number(event.target.value))}
+                    onChange={event => setimdbScoreQuery(Number(event.target.value))}
                 >
                 </input>
 
