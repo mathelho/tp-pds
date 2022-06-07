@@ -20,23 +20,22 @@ no mínimo enquanto dividirmos as subtasks entre os componentes da equipe.
 
 ## Requisitos:
 
-Para começar a utilizar Banco de filmes é necessário atendes a alguns pré requisitos básicos que apresentaremos a seguir:
-- Instalar JDK na versão 17;
-- Instalar a IDE IntelliJ (Opcional, para visualizar o código)
+Para começar a utilizar Banco de filmes é necessário atender a alguns pré requisitos básicos que apresentaremos a seguir:
+- Instalar JDK na versão 17
+- Instalar a IDE IntelliJ
 - Instalar o Maven
 - Instalar Docker
 - Instalar MySQL Workbench
 - Instalar Postman
 - Instalar o Node.js
-- Instalar o Yarn (opcional, pode-se usar o gerenciador padrão do Node também)
+- Instalar o Yarn (Opcional, pode-se usar o gerenciador padrão do Node também)
 
-Após instalar as ferramentas necessárias você estará apto a utilizar o sistema de forma completa. (Ou não, necessário verificar a necessidade
-de construir um HOW TO, explicando como setar todas as variáveis necessárias e organizar o ambiente para que o usuário consiga efetivamente utiliza-lo)
+Após instalar as ferramentas necessárias, você estará apto a utilizar o sistema de forma completa.
 
 ## Step-by-Step
-- Para rodar o sistema pela primeira vez, execute um "docker-compose-up" estando no diretório tp-pds/banco-filmes
-- Após, execute um mvn clean install
-- Então rode o projeto (classe BancoFilmesApplication) no IntelliJ para subir a aplicação;
+- Para rodar o sistema pela primeira vez, execute um `docker compose up` estando no diretório `tp-pds/banco-filmes`.
+- Após, execute um `mvn clean install`.
+- Então rode o projeto (classe BancoFilmesApplication) no IntelliJ para subir a aplicação.
 - Importe o arquivo JSON (pode ser encontrado no diretório "collections" no nosso projeto) para o Postman, e então, use as funções que já desenvolvemos até então.
 - Para rodar a aplicação do frontend, após já ter instalado o Node.js, navegue até a pasta banco-filmes/web e rode no terminal o comando `npm install` para instalar todas as dependências (pode demorar um pouco).
 - Após concluir a instalação, rode o comando `npm run dev` para subir a aplicação React.
@@ -68,7 +67,7 @@ inteiro.
 
 ## Backlog Back-end
 
-### Estruturar basicamente o projeto DONE
+### Estruturar basicamente o projeto — DONE
 Para que os desenvolvedores possam atuar paralelamente, a estrutura básica do projeto precisa estar bem definida para que não ocorram muitos conflitos durante as outras estórias do sprint
 #### Tarefas:
 - 1 - Definir arquitetura do projeto [Time completo]
@@ -79,21 +78,21 @@ Para que os desenvolvedores possam atuar paralelamente, a estrutura básica do p
     - 4.2 - Criar atributo da Controller, MovieService, e criar um construtor com esse atributo;
     - 4.3 - Uma lista de Movie será criada no MovieService para que as funcionalidade possam ser testadas, essa lista será estática com algumas informações de filme pré-definidas.
 
-### Listar filmes DONE
+### Listar filmes — DONE
 Com a estrutura pronta, pode-se começar a adicionar funcionalidades. Nesta estória, será feito o verbo GET, do endpoint /movies. Essa funcionalidade será responsável por retornar todos os filmes salvos no banco de dados. Porém, como ainda não se tem uma estrutura de banco de dados definida, será retornada a lista de filmes criada anteriormente.
 #### Tarefas:
 - 1 - MovieService - Criar método listAll(), retornando a lista de filmes [Celso]
 - 2 - MovieController - Criar método listAll(), o qual irá chamar o método recém criado no MovieService [Celso]
     - Não se esquecer de que o Controller não irá retornar uma classe de domínio do projeto, irá retornar um ResponseEntity dessa classe
 
-### Adicionar filme DONE
+### Adicionar filme — DONE
 Com a estrutura pronta, pode-se começar a adicionar funcionalidades. Nesta estória, será feito o verbo POST, do endpoint /movies. Essa funcionalidade será responsável por adicionar novos filmes no banco de dados. Porém, como ainda não se tem uma estrutura de banco de dados definida, será adicionado à lista de filmes criada anteriormente.
 #### Tarefas:
 - 1 - MovieService - Criar método save(Movie movie), adicionando movie na lista de Movie.  [Felipe]
 - 2 - MovieController Criar método save, o qual irá chamar o método recém criado no MovieService [Felipe]
     - Não se esquecer de que o Controller não irá retornar uma classe de domínio do projeto, irá retornar um ResponseEntity do objeto recém criado.
 
-### Encontrar filme por ID DONE
+### Encontrar filme por ID — DONE
 Com a estrutura pronta, pode-se começar a adicionar funcionalidades. Nesta estória, será feito outro verbo GET, do endpoint /movies/{id}. Essa funcionalidade será responsável por encontrar um filme por ID no banco de dados. Porém, como ainda não se tem uma estrutura de banco de dados definida, será encontrado na lista de filmes criada anteriormente.
 #### Tarefas:
 - 1 - Movie Service - Criar método findById(Long id) [Celso]
@@ -102,7 +101,7 @@ Com a estrutura pronta, pode-se começar a adicionar funcionalidades. Nesta est�
     - Não se esquecer de que o Controller não irá retornar uma classe de domínio do projeto, irá retornar um ResponseEntity do objeto encontrado.
     - Use a annotation @GetMapping(path = "/{id}") no Controller, pois não podemos ter dois verbos iguais mapeados para o mesmo endpoint.
     
-### Remover filmes DONE
+### Remover filmes — DONE
 #### Depende da estória "Encontrar filme por ID"
 Com a estrutura pronta, pode-se começar a adicionar funcionalidades. Nesta estória, será feito o verbo PUT, do endpoint /movies. Essa funcionalidade será responsável por remover filmes no banco de dados. Porém, como ainda não se tem uma estrutura de banco de dados definida, removerá um filme da lista criada anteriormente.
 #### Tarefas:
@@ -112,7 +111,7 @@ Com a estrutura pronta, pode-se começar a adicionar funcionalidades. Nesta est�
 - 2 - MovieController Criar método replace, o qual irá chamar o método recém criado no MovieService [Celso]
     - PUT e DELETE não retornarão o objeto, apenas um ResponseEntity<>(HttpStatus.NO_CONTENT) caso der tudo certo.
 
-### Editar filmes DONE
+### Editar filmes — DONE
 #### Depende da estória "Encontrar filme por ID"
 Com a estrutura pronta, pode-se começar a adicionar funcionalidades. Nesta estória, será feito o verbo PUT, do endpoint /movies. Essa funcionalidade será responsável por editar (sobrescrever) filmes no banco de dados. Porém, como ainda não se tem uma estrutura de banco de dados definida, removerá um objeto da lista criada anteriormente e adicionará o novo.
 #### Tarefas:
@@ -121,7 +120,7 @@ Com a estrutura pronta, pode-se começar a adicionar funcionalidades. Nesta est�
 - 2 - MovieController Criar método delete, o qual irá chamar o método recém criado no MovieService [Celso]
     - PUT e DELETE não retornarão o objeto, apenas um ResponseEntity<>(HttpStatus.NO_CONTENT) caso der tudo certo.
 
-### Preparando Projeto Para Persistir Dados DONE
+### Preparando Projeto Para Persistir Dados — DONE
 Persistir dados no banco de dados com a dependência Spring JPA
 #### Tarefas:
 - 1 - Estudar dependência da JPA [Felipe]
@@ -132,14 +131,14 @@ Persistir dados no banco de dados com a dependência Spring JPA
 - 6 - Atualizar a controller, e testar o novo método [Felipe]
 - 7 - Mostrar resultados para o time [Time completo]
 
-### Persistir Dados DONE
+### Persistir Dados — DONE
 Persistir dados no banco de dados com a dependência Spring JPA
 #### Tarefas:
 - 1 - Remover lista pré definida de filmes e atualizar os métodos do MovieService
 - 2 - Atualizar a Controller
 - 3 - Testar
 
-### Cadastrar usuário CANCELED
+### Cadastrar usuário — CANCELED
 [POC] Estudar como fazer cadastro de usuário utilizando Springboot e apresentar resultados para o time. [Felipe]
 
 ## Backlog Front-end
@@ -199,3 +198,50 @@ Fazer a estilização e componentização da tela da Watch List, que irá exibir
 - 1 - Estruturar o componente da watch list (poderá ser similar ou o mesmo da listagem principal) [Matheus]
 - 2 - Estilizar o componente [Matheus]
 - 3 - Implementar a lógica de salvar e recuperar os filmes da watch list [Matheus]
+
+## Arquitetura
+![architecture-diagram](banco-filmes/images/BancoDeFilmesHexagonalArchitecture.png)
+#### Como definido pelo Professor, o projeto seguiu a Arquitetura Hexagonal.
+A arquitetura hexagonal foi utilizada para que as classes de domínio estejam desacopladas das 
+classes de infraestrutura, tecnologias ou sistemas externos. Desse modo, poderíamos mudar de 
+tecnologia no futuro sem impactar as classes de domínio, além de que as classes de domínio podem ser
+compartilhadas por várias tecnologias.
+
+#### Portas:
+Na arquitetura hexagonal, as portas são as interfaces usadas para se comunicar com as classes de 
+domínio.
+
+Portas no projeto:
+- `MovieRepositoryPort`: Porta de saída, chama as classes do banco de dados através da classe de 
+domínio.
+- `MovieServicePort`: Porta de entrada, chama as classes do domínio através da interface web.
+
+#### Adaptadores:
+Os adaptadores consistem em estruturas que recebem chamadas de dentro do sistema e direcionam para 
+funções externas ou chamadas externas e direcionam para as portas de entrada.
+
+Adaptadores no projeto:
+- `MovieRepository`: direciona as chamadas internas do domínio para o banco de dados;
+- `MovieController`: recebe as chamadas REST do front-end, e as adapta para o domínio do sistema.
+
+#### Além disso, utilizamos os conceitos de DDD.
+O DDD tem o objetivo de centrar o design no domínio do negócio. O domínio é o problema de negócio a 
+ser resolvido, no nosso caso, queremos facilitar o acesso do usuário aos filmes e suas principais 
+informações, como enredo, notas, onde assistir, etc. Dessa forma, caso quisermos atualizar o banco 
+de dados, ou a framework de desenvolvimento, não precisaremos modificar nada no domínio, pois ele 
+está livre de tecnologia, neste caso, é Java puro.
+
+#### Entidade
+- `Movie`: nessa entidade temos os atributos de um filme e getters e setters para acessá-los.
+
+#### Objeto de valor
+- `Title`: Nome do filme
+- `GenreEnum`: Nesse arquivo definimos os gêneros que possuímos no filme, não possuindo identificador 
+único.
+
+#### Serviço
+- `MovieService`: É onde definimos as lógicas de negócio importantes realizadas nos filmes no nosso 
+domínio, tais como encontrar filmes por título, salvar filmes, deletar filmes, avaliar filme e etc.
+
+#### Repositório
+- `MovieRepository`: Classe utilizada para recuperar filmes do nosso banco de dados.
