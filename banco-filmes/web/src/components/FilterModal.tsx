@@ -4,8 +4,8 @@ import { CloseButton } from "./CloseButton";
 import { Movie } from "./MovieList";
 
 interface FilterModalProps {
-    movieList: Movie[];
-    setMovieList: React.Dispatch<React.SetStateAction<Movie[]>>;
+    movieList: Movie[],
+    setMovieList: React.Dispatch<React.SetStateAction<Movie[]>>,
     setIsHomeOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -16,7 +16,7 @@ export function FilterModal({ movieList, setMovieList, setIsHomeOpen }: FilterMo
 
     function handleFilter() {
     
-        console.log(titleQuery, genreQuery,imdbScoreQuery);
+        console.log(titleQuery, genreQuery, imdbScoreQuery);
         let filteredMovieList;
 
         if(genreQuery != '')

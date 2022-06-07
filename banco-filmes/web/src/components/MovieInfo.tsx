@@ -198,9 +198,9 @@ export function MovieInfo({ movieChosen, watchList, setWatchList }: MovieInfoPro
                     <p className="font-bold mt-3">
                         Gêneros: {movieChosen?.genres.map((genre, i) => {
                             if (i + 1 === movieChosen.genres.length) {
-                                return <span>{genreTypes[genre as keyof typeof genreTypes]}</span>
+                                return <span key={i}>{genreTypes[genre as keyof typeof genreTypes]}</span>
                             } else {
-                                return <span>{genreTypes[genre as keyof typeof genreTypes]}, </span>
+                                return <span key={i}>{genreTypes[genre as keyof typeof genreTypes]}, </span>
                             }
                         })}
                     </p>
