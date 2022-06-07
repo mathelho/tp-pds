@@ -15,6 +15,13 @@ import huluImg from '../assets/hulu.png'
 import paramountPlusImg from '../assets/paramount_plus.jpeg'
 import starPlusImg from '../assets/star_plus.png'
 
+import livreImg from '../assets/livre.svg'
+import dezAnosImg from '../assets/10anos.svg'
+import dozeAnosImg from '../assets/12anos.svg'
+import quatorzeAnosImg from '../assets/14anos.svg'
+import dezesseisAnosImg from '../assets/16anos.svg'
+import dezoitoAnosImg from '../assets/18anos.svg'
+
 interface MovieInfoProps {
     movieChosen: Movie | null,
     watchList: Movie[],
@@ -84,21 +91,81 @@ const streamingTypes = {
     }
 }
 
+const advisoryTypes = {
+    LIVRE: {
+        image: {
+            source: livreImg,
+            alt: 'Ícone de classificação livre'
+        }
+    },
+    DEZ: {
+        image: {
+            source: dezAnosImg,
+            alt: 'Ícone de classificação para maiores de 10 anos'
+        }
+    },
+    DOZE: {
+        image: {
+            source: dozeAnosImg,
+            alt: 'Ícone de classificação para maiores de 12 anos'
+        }
+    },
+    QUATORZE: {
+        image: {
+            source: quatorzeAnosImg,
+            alt: 'Ícone de classificação para maiores de 14 anos'
+        }
+    },
+    DEZESSEIS: {
+        image: {
+            source: dezesseisAnosImg,
+            alt: 'Ícone de classificação para maiores de 16 anos'
+        }
+    },
+    DEZOITO: {
+        image: {
+            source: dezoitoAnosImg,
+            alt: 'Ícone de classificação para maiores de 18 anos'
+        }
+    },
+}
+
+const genreTypes = {
+    ACTION: 'Ação',
+    ADVENTURE: 'Aventura',
+    COMEDY: 'Comédia',
+    DRAMA: 'Drama',
+    FANTASY: 'Fantasia',
+    HORROR: 'Terror',
+    HISTORICAL: 'Histórico',
+    MYSTERY: 'Mistério',
+    ROMANCE: 'Romance',
+    SCIENCE_FICTION: 'Ficção Científica',
+    THRILLER: 'Thriller'
+}
+
 export function MovieInfo({ movieChosen, watchList, setWatchList }: MovieInfoProps) {
     const [userRatingInput, setUserRatingInput] = useState('');
 
     function handleRatingSubmit() {
-        console.log(parseFloat(userRatingInput));
+        let rating = parseFloat(userRatingInput);
+        console.log(rating);
 
-        fetch('http://localhost:8080/movies/rate', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({"id": movieChosen?.id, "score": parseFloat(userRatingInput)})
-        }).then(response => response.json())
-        .then(response => console.log(response))
+        if (Object.is(NaN, rating) || (rating < 1 || rating > 10) ) {
+            alert('Por favor, digite uma nota entre 1 e 10!')
+        } else {
+            fetch('http://localhost:8080/movies/rate', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({"id": movieChosen?.id, "score": rating})
+            }).then(response => response.json())
+            .then(response => console.log(response))
+
+            alert('Filme avaliado!');
+        }
     }
 
     function handleAddMovieToWatchList() {
@@ -121,8 +188,22 @@ export function MovieInfo({ movieChosen, watchList, setWatchList }: MovieInfoPro
 
                 <div className="mx-8 w-[480px]">
                     <h1 className="text-xl font-extrabold">
-                        {movieChosen?.title}
+                        {movieChosen?.title} ({movieChosen?.releaseYear})
                     </h1>
+
+                    <p className="font-bold mt-3">
+                        Diretor: {movieChosen?.director}
+                    </p>
+
+                    <p className="font-bold mt-3">
+                        Gêneros: {movieChosen?.genres.map((genre, i) => {
+                            if (i + 1 === movieChosen.genres.length) {
+                                return <span>{genreTypes[genre as keyof typeof genreTypes]}</span>
+                            } else {
+                                return <span>{genreTypes[genre as keyof typeof genreTypes]}, </span>
+                            }
+                        })}
+                    </p>
 
                     <p className="mt-10">
                         {movieChosen?.synopsis}
@@ -144,7 +225,7 @@ export function MovieInfo({ movieChosen, watchList, setWatchList }: MovieInfoPro
                             
                             <div className="flex flex-row items-center">
                                 <img className="w-12 h-12" src={starImg} alt="Ícone do IMDB" />
-                                <p className="ml-2">{`${movieChosen?.score}/10`}</p>
+                                <p className="ml-2">{`${movieChosen?.score}/10 (${movieChosen?.numberOfReviews})`}</p>
                             </div>
                         </div>
 
@@ -172,12 +253,22 @@ export function MovieInfo({ movieChosen, watchList, setWatchList }: MovieInfoPro
 
                 </div>
 
+                <div className="flex flex-col flex-wrap w-[200px] p-2 mx-2 border-[1px] border-[#CA7613] rounded-lg">
+                    <p>Classificação indicativa:</p>
+
+                    <img 
+                        src={advisoryTypes[movieChosen?.advisoryRating as keyof typeof advisoryTypes].image.source} 
+                        alt={advisoryTypes[movieChosen?.advisoryRating as keyof typeof advisoryTypes].image.alt}
+                        className="w-9 h-9 mt-2"
+                    />
+                </div>
+
                 <Popover>
                     <Popover.Button className="w-[200px] h-12 p-2 mx-2 border-[1px] border-[#CA7613] rounded-lg">
                         <p>Avaliar o filme</p>
                     </Popover.Button>
 
-                    <Popover.Panel className="flex flex-col items-center justify-center absolute p-3 top-20 left-0 right-0 mx-auto w-[466px] h-[234px] bg-black opacity-95">
+                    <Popover.Panel className="flex flex-col items-center justify-center absolute p-3 top-0 bottom-0 left-0 right-0 mx-auto my-auto rounded-xl w-[466px] h-[234px] bg-black opacity-95">
                         <input 
                             className="text-black" 
                             type="text" 
