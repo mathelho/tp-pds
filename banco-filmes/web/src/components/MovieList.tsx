@@ -63,6 +63,10 @@ export function MovieList({ onHomeOpen, onRankingOpen, onWatchListOpen, setIsHom
 
     useEffect(() => {
         if (onWatchListOpen) {
+            fetch('http://localhost:8080/movies')
+            .then(response => response.json())
+            .then(data => setMovieList(data))
+
             setIsHomeOpen(false);
             setIsRankingOpen(false);
             setMovieChosen(null);
@@ -73,7 +77,11 @@ export function MovieList({ onHomeOpen, onRankingOpen, onWatchListOpen, setIsHom
         <>
             {onHomeOpen ? (
                 <>
-                    <FilterButton movieList={movieList} setMovieList={setMovieList} setIsHomeOpen={setIsHomeOpen} />
+                    <FilterButton 
+                        movieList={movieList} 
+                        setMovieList={setMovieList}
+                        setIsHomeOpen={setIsHomeOpen} 
+                    />
 
                     <section className="mx-auto my-0 px-10">
                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-y-3">
@@ -91,7 +99,7 @@ export function MovieList({ onHomeOpen, onRankingOpen, onWatchListOpen, setIsHom
                     ) : (
                         <>
                             {onWatchListOpen ? (
-                                <WatchList watchList={watchList} setWatchList={setWatchList} setMovieChosen={setMovieChosen} />
+                                <WatchList movieList={movieList} watchList={watchList} setWatchList={setWatchList} setMovieChosen={setMovieChosen} />
                             ) : (
                                 <MovieInfo movieChosen={movieChosen} watchList={watchList} setWatchList={setWatchList} />
                             )}

@@ -2,12 +2,13 @@ import { Trash } from "phosphor-react";
 import { Movie } from "./MovieList";
 
 interface WatchListProps {
+    movieList: Movie[],
     watchList: Movie[],
     setWatchList: React.Dispatch<React.SetStateAction<Movie[]>>,
     setMovieChosen: React.Dispatch<React.SetStateAction<Movie | null>>;
 }
 
-export function WatchList({ watchList, setWatchList, setMovieChosen }: WatchListProps) {
+export function WatchList({ movieList, watchList, setWatchList, setMovieChosen }: WatchListProps) {
     
     function handleRemoveFromWatchList(movieFromList: Movie) {
         const newWatchList = watchList.filter(movie => movie != movieFromList);
@@ -21,6 +22,9 @@ export function WatchList({ watchList, setWatchList, setMovieChosen }: WatchList
                 <h1 className="text-2xl font-extrabold">Sua Watch List</h1>
 
                 {watchList.map(movie => {
+                    // necessário para acessar o filme da lista completa, e não só da watchList
+                    let movieInListAll = movieList.find(allMovies => allMovies.id === movie.id);
+
                     return (
                         <>
                             <div className="flex items-center my-8 w-[50%] hover:brightness-110 transition-all">
@@ -28,7 +32,7 @@ export function WatchList({ watchList, setWatchList, setMovieChosen }: WatchList
                                     src={movie.imageUrl} 
                                     alt={`Poster do filme ${movie.title}`}
                                     className="w-20 h-32 hover:cursor-pointer"
-                                    onClick={() => setMovieChosen(movie)}
+                                    onClick={() => setMovieChosen(movieInListAll!)}
                                 />
 
                                 <h2 className="ml-5">{movie.title}</h2>

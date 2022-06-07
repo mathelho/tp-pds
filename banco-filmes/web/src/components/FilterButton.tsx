@@ -4,8 +4,8 @@ import { FilterModal } from './FilterModal';
 import { Movie } from './MovieList';
 
 interface FilterButtonProps {
-    movieList: Movie[];
-    setMovieList: React.Dispatch<React.SetStateAction<Movie[]>>;
+    movieList: Movie[],
+    setMovieList: React.Dispatch<React.SetStateAction<Movie[]>>,
     setIsHomeOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
