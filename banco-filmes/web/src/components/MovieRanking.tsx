@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Movie } from "./MovieList";
+import starImg from '../assets/star.svg'
 
 interface MovieRankingProps {
     setMovieChosen: React.Dispatch<React.SetStateAction<Movie | null>>
@@ -30,10 +31,15 @@ export function MovieRanking({ setMovieChosen }: MovieRankingProps) {
                                 className="w-[204px] h-[303px] rounded-2xl"
                             />
 
-                            <div className="flex flex-col ml-8">
+                            <div className="flex flex-col ml-8">                             
                                 <h2 className="text-xl font-bold">{`${rankingNumber} - ${movie.title}`}</h2>
-
+                                
                                 <p className="mt-10">{movie.synopsis}</p>
+
+                                <div className="flex items-center mt-8">
+                                    <img className="w-10 h-10" src={starImg} alt="Ícone de estrela" />
+                                    <p className="ml-2">{movie.score}</p>
+                                </div>
                             </div>
 
                         </div>

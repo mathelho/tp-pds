@@ -6,16 +6,20 @@ export function App() {
   const [isHomeOpen, setIsHomeOpen] = useState(true);
   const [isRankingOpen, setIsRankingOpen] = useState(false);
   const [isWatchListOpen, setIsWatchListOpen] = useState(false);
+  const [movieList, setMovieList] = useState<Movie[]>([]);
 
   return (
     <>
       <Header 
-        setIsHomeOpen={setIsHomeOpen} 
+        setIsHomeOpen={setIsHomeOpen}
         setIsRankingOpen={setIsRankingOpen}
         setIsWatchListOpen={setIsWatchListOpen}
+        setMovieList={setMovieList}
       />
 
       <MovieList 
+        movieList={movieList}
+        setMovieList={setMovieList}
         onHomeOpen={isHomeOpen} 
         onRankingOpen={isRankingOpen}
         onWatchListOpen={isWatchListOpen}
