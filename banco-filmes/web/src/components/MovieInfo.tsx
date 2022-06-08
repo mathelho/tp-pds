@@ -270,9 +270,9 @@ export function MovieInfo({ movieChosen, watchList, setWatchList }: MovieInfoPro
 
                     <Popover.Panel className="flex flex-col items-center justify-center absolute p-3 top-0 bottom-0 left-0 right-0 mx-auto my-auto rounded-xl w-[466px] h-[234px] bg-black opacity-95">
                         <input 
-                            className="text-black" 
+                            className="text-black w-[50%]" 
                             type="text" 
-                            placeholder="Digite a nota..."
+                            placeholder="Digite uma nota de 1 a 10..."
                             onChange={event => setUserRatingInput(event.target.value)}
                         />
 
