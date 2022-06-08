@@ -234,7 +234,7 @@ export function MovieInfo({ movieChosen, watchList, setWatchList }: MovieInfoPro
                 </div> {/* final da seção lateral com título e sinopse */}
             </section>
 
-            <section className="flex justify-center items-center mt-10">
+            <section className="flex justify-center items-center mt-10 mb-4">
                 <div className="flex flex-col flex-wrap w-[200px] p-2 mx-2 border-[1px] border-[#CA7613] rounded-lg">
                     <p>Opções para assistir:</p>
 
