@@ -24,13 +24,14 @@ interface MovieListProps {
     onHomeOpen: boolean,
     onRankingOpen: boolean,
     onWatchListOpen: boolean,
+    movieList: Movie[],
+    setMovieList: React.Dispatch<React.SetStateAction<Movie[]>>,
     setIsHomeOpen: React.Dispatch<React.SetStateAction<boolean>>,
     setIsRankingOpen: React.Dispatch<React.SetStateAction<boolean>>,
     setIsWatchListOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export function MovieList({ onHomeOpen, onRankingOpen, onWatchListOpen, setIsHomeOpen, setIsRankingOpen, setIsWatchListOpen }: MovieListProps) {
-    const [movieList, setMovieList] = useState<Movie[]>([]);
+export function MovieList({ onHomeOpen, onRankingOpen, onWatchListOpen, movieList, setMovieList, setIsHomeOpen, setIsRankingOpen, setIsWatchListOpen }: MovieListProps) {
     const [watchList, setWatchList] = useState<Movie[]>([]);
     const [movieChosen, setMovieChosen] = useState<Movie | null>(null);
 

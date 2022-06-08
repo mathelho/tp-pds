@@ -56,7 +56,7 @@ export function FilterModal({ movieList, setMovieList, setIsHomeOpen }: FilterMo
                         <option className="text-black" value="COMEDY">Comédia</option>
                         <option className="text-black" value="DRAMA">Drama</option>
                         <option className="text-black" value="FANTASY">Fantasia</option>
-                        <option className="text-black" value="HORROR">Horror</option>
+                        <option className="text-black" value="HORROR">Terror</option>
                         <option className="text-black" value="HISTORICAL">Histórico</option>
                         <option className="text-black" value="MYSTERY">Mistério</option>
                         <option className="text-black" value="ROMANCE">Romance</option>
@@ -64,7 +64,7 @@ export function FilterModal({ movieList, setMovieList, setIsHomeOpen }: FilterMo
                         <option className="text-black" value="THRILLER">Thriller</option>
                 </select>
 
-                <h2 className="text-xl mb-2">Buscar por nota do IMDB</h2>
+                <h2 className="text-xl mb-2 mt-2">Buscar por nota do IMDB</h2>
                 <input
                     className="w-20 h-8 p-4 rounded-md bg-transparent border-2 border-[#CA7613]"
                     type="number"
