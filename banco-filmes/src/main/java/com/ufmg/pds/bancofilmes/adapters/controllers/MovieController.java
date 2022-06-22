@@ -66,8 +66,8 @@ public class MovieController {
     return new ResponseEntity<>(movieService.saveInBatch(movies), HttpStatus.CREATED);
   }
 
-  @DeleteMapping(path = "/{id}")
-  public ResponseEntity<Void> delete(@PathVariable Long id) {
+  @DeleteMapping()
+  public ResponseEntity<Void> delete(@RequestParam Long id) {
     movieService.delete(id);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
