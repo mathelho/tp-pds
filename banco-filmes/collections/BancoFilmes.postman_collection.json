@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "3e3a5943-def4-4630-858d-d87ea2431edc",
+		"_postman_id": "53e2b35a-c99a-41eb-a1a6-ec63ff82d7a3",
 		"name": "BancoFilmes",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20542389"
 	},
 	"item": [
 		{
@@ -30,14 +31,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/movies/30",
+					"raw": "localhost:8080/movies/179",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"movies",
-						"30"
+						"179"
 					]
 				}
 			},
@@ -176,14 +177,19 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/movies/30",
+					"raw": "localhost:8080/movies?id=179",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"movies",
-						"30"
+						"movies"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "179"
+						}
 					]
 				}
 			},
