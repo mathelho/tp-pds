@@ -45,7 +45,7 @@ public class MovieService implements MovieServicePort {
   @Override
   @Transactional
   public Movie save(MoviePostRequestBodyDTO movie) {
-    Movie movieToBeSaved = MovieMapper.INSTANCE.toMovie(movie);
+    Movie movieToBeSaved = MovieMapper.INSTANCE.moviePostRequestBodyDTOToMovie(movie);
     movieToBeSaved.setNumberOfReviews(0);
     movieToBeSaved.setScore(0.0);
     return movieRepositoryPort.save(movieToBeSaved);
@@ -96,7 +96,7 @@ public class MovieService implements MovieServicePort {
   public void replace(MoviePutRequestBodyDTO movie) {
     Movie savedMovie = findById(movie.getId());
 
-    Movie movieToBeSaved = MovieMapper.INSTANCE.toMovie(movie);
+    Movie movieToBeSaved = MovieMapper.INSTANCE.moviePutRequestBodyDTOToMovie(movie);
     movieToBeSaved.setId(savedMovie.getId());
     movieToBeSaved.setNumberOfReviews(savedMovie.getNumberOfReviews());
     movieToBeSaved.setScore(savedMovie.getScore());
