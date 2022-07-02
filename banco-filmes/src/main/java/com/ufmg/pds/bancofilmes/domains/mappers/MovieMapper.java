@@ -10,7 +10,9 @@ import org.mapstruct.factory.Mappers;
 public abstract class MovieMapper {
   public static final MovieMapper INSTANCE = Mappers.getMapper(MovieMapper.class);
 
-  public abstract Movie toMovie(MoviePostRequestBodyDTO moviePostRequestBodyDTO);
+  public abstract Movie moviePostRequestBodyDTOToMovie(
+      MoviePostRequestBodyDTO moviePostRequestBodyDTO);
 
-  public abstract Movie toMovie(MoviePutRequestBodyDTO moviePutRequestBodyDTO);
+  public abstract Movie moviePutRequestBodyDTOToMovie(
+      MoviePutRequestBodyDTO moviePutRequestBodyDTO);
 }
