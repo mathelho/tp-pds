@@ -53,11 +53,11 @@ public class MovieService implements MovieServicePort {
 
   @Override
   public Movie rate(RateMoviePostRequestBodyDTO rate) {
-    Movie savedMovie = findById(rate.getId());
-
     if (ObjectUtils.isEmpty(rate.getScore()) || rate.getScore() > 10.0 || rate.getScore() < 1.0) {
       throw new BadRequestException("Movie score should be between 1 and 10");
     }
+
+    Movie savedMovie = findById(rate.getId());
 
     Integer actualReviewers = savedMovie.getNumberOfReviews();
     Double actualScore = savedMovie.getScore();
