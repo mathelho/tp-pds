@@ -27,7 +27,7 @@ export function WatchList({ movieList, watchList, setWatchList, setMovieChosen }
 
                     return (
                         <>
-                            <div className="flex items-center my-8 w-[50%] hover:brightness-110 transition-all">
+                            <div id={`${movie.id}`} className="flex items-center my-8 w-[50%] hover:brightness-110 transition-all">
                                 <img 
                                     src={movie.imageUrl} 
                                     alt={`Poster do filme ${movie.title}`}
@@ -37,7 +37,8 @@ export function WatchList({ movieList, watchList, setWatchList, setMovieChosen }
 
                                 <h2 className="ml-5">{movie.title}</h2>
 
-                                <Trash 
+                                <Trash
+                                    id={`${movie.id}`}
                                     weight="bold" 
                                     size={30} 
                                     className="ml-10 hover:cursor-pointer"
