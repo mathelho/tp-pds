@@ -6,17 +6,17 @@ import com.ufmg.pds.bancofilmes.domains.Movie
 import com.ufmg.pds.bancofilmes.domains.WhereToWatchEnum
 import com.ufmg.pds.bancofilmes.domains.dtos.MoviePostRequestBodyDTO
 import com.ufmg.pds.bancofilmes.domains.dtos.MoviePutRequestBodyDTO
+import com.ufmg.pds.bancofilmes.domains.dtos.RateMoviePostRequestBodyDTO
 import com.ufmg.pds.bancofilmes.domains.mappers.MovieMapper
 import com.ufmg.pds.bancofilmes.domains.ports.repositories.MovieRepositoryPort
+import com.ufmg.pds.bancofilmes.exceptions.BadRequestException
 import com.ufmg.pds.bancofilmes.exceptions.NotFoundException
 import org.apache.commons.lang3.ObjectUtils
 import spock.lang.Specification
 
 import java.util.stream.IntStream
 
-import static com.ufmg.pds.bancofilmes.mocks.MovieMock.createMovie
-import static com.ufmg.pds.bancofilmes.mocks.MovieMock.createMoviePostRequestBody
-import static com.ufmg.pds.bancofilmes.mocks.MovieMock.createMoviePutRequestBody
+import static com.ufmg.pds.bancofilmes.mocks.MovieMock.*
 
 class MovieServiceTest extends Specification {
     MovieService movieService
@@ -281,38 +281,49 @@ class MovieServiceTest extends Specification {
         assert expectedMovie == savedMovie
     }
 
-    // Failling Test
     def "it should throw a BadRequestException when rate is lower than 1.0"() {
         given:
-        String expectedMessage = "Movie score should be between 1 and 10"
-        Long id = 42L
+        RateMoviePostRequestBodyDTO rate = createRateMoviePostRequestBody(0.9)
+        def expectedMessage = "Movie score should be between 1 and 10"
 
         when:
-        movieService.findById(id)
+        movieService.rate(rate)
 
         then:
-        movieRepositoryPort.findById(id) >> Optional.empty()
-
-        and:
-        NotFoundException exception = thrown(NotFoundException)
+        BadRequestException exception = thrown(BadRequestException)
         assert exception.getMessage() == expectedMessage
     }
 
-    // Failling test
     def "it should throw a BadRequestException when rate is bigger than 10.0"() {
         given:
-        String expectedMessage = "Movie score should be between 1 and 10"
-        Long id = 42L
+        RateMoviePostRequestBodyDTO rate = createRateMoviePostRequestBody(10.1)
+        def expectedMessage = "Movie score should be between 1 and 10"
 
         when:
-        movieService.findById(id)
+        movieService.rate(rate)
 
         then:
-        movieRepositoryPort.findById(id) >> Optional.empty()
+        BadRequestException exception = thrown(BadRequestException)
+        assert exception.getMessage() == expectedMessage
+    }
+
+    def "it should rate a movie successfully"() {
+        given:
+        Double score = 10.0
+        RateMoviePostRequestBodyDTO rate = createRateMoviePostRequestBody(score)
+        Movie savedMovie = createMovie()
+
+        when:
+        Movie returnedMovie = movieService.rate(rate)
+
+        then:
+        1 * movieRepositoryPort.findById(1L) >> Optional.of(savedMovie)
+        1 * movieRepositoryPort.save(savedMovie) >> savedMovie
 
         and:
-        NotFoundException exception = thrown(NotFoundException)
-        assert exception.getMessage() == expectedMessage
+        assert ObjectUtils.isNotEmpty(returnedMovie)
+        assert ObjectUtils.isNotEmpty(savedMovie.getScore())
+        assert savedMovie.getScore() == score
     }
 
     // MARK: Auxiliar function
